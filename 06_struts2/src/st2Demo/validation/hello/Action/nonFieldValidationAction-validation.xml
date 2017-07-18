@@ -1,0 +1,13 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<!-- 非字段验证  验证俩次密码是否一直-->
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[password==rpassword]]>
+		</param>
+        <message>Password is not equals to password2</message>
+	</validator>
+</validators>

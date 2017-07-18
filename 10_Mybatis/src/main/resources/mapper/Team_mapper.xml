@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.mybatis.model.Team">
+
+    <!--一对一关联-->
+    <!--方法一-->
+    <select id="getTeam" parameterType="int"   resultMap="TeamResultMap">
+        select * from Team t,Loader l where t.l_id = l.t_id and t.id =#{id}
+    </select>
+    <!--定义映射关系-->
+    <resultMap id="TeamResultMap" type="team">
+        <id property="id" column="id"></id>
+        <result property="name" column="c_name"></result>
+        <association property="loader" column="lid" javaType="loader">
+            <id property="id" column="t_id"></id>
+            <result property="name" column="t_name"></result>
+        </association>
+    </resultMap>
+
+    <!--第二种方式-->
+    <select id="getLoader" parameterType="int" resultType="loader">
+        SELECT
+          t_id id,
+          t_name name
+        FROM loader t where t.t_id = #{id}
+    </select>
+    <select id="method2" parameterType="int" resultMap="resultMap2">
+        SELECT
+          id,
+          c_name,
+          l_id
+        FROM team t where t.id = #{id}
+    </select>
+    <resultMap id="resultMap2" type="team">
+        <id property="id" column="id"></id>
+        <result property="name" column="c_name"></result>
+        <association property="loader" column="l_id" javaType="loader" select="getLoader">
+
+        </association>
+    </resultMap>
+</mapper>

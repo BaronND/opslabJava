@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 配置一个命名查询 -->
+<hibernate-mapping>
+
+	
+	
+	
+	<!-- 配置权限的命名查询 -->
+	
+	<!-- 查询最大权限编码 -->
+    <query name="RIGHTS_MAX_CODE">
+    	<![CDATA[
+			from Rights t  order by t.rightsGroup desc,t.rightsCode desc     	
+    	]]>
+    </query>
+
+</hibernate-mapping>

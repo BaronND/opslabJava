@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.UserInfo" table="OPS_RE_USERINFO">
+        <id name="userId" type="java.lang.String"  length="32">
+            <column name="userId"/>
+            <generator class="com.opslab.framework.base.util.IDGenerator"/>
+        </id>
+        <property name="userCode" type="java.lang.String"  length="32">
+            <column name="userCode"/>
+        </property>
+        <property name="userName" type="java.lang.String" length="48">
+            <column name="userName"/>
+        </property>
+        <property name="deptId" type="java.lang.String"  length="32">
+            <column name="deptId"/>
+        </property>
+        <property name="password" type="java.lang.String" length="32">
+            <column name="password"/>
+        </property>
+        <property name="valid" type="java.lang.String" length="1">
+            <column name="valid"/>
+        </property>
+        <property name="createTime" type="java.lang.String" length="19">
+            <column name="createTime"/>
+        </property>
+    </class>
+</hibernate-mapping>
+

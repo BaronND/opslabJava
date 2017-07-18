@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示多对一关键关系 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.one2many">
+    <class name="Customer" table="hbm_tbl2_CUSTOMER">
+        <id name="CustomerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="hilo" />
+        </id>
+        <property name="CustomerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME" length="50" />
+        </property>
+        
+        <!-- 映射集合 -->
+        <set name="orderSet" table="hbm_tbl2_ORDER" inverse="true">
+        	<key column="CUSTOMER_ID"></key>
+        	<one-to-many class="Order"/>
+        </set>
+    </class>
+    <class name="Order" table="hbm_tbl2_ORDER">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="OrderId" type="java.lang.String">
+            <column name="ORDER_ID" length="50"/>
+        </property>
+        <property name="OrderName" type="java.lang.String">
+            <column name="ORDER_NAME" length="50"/>
+        </property>
+        	
+        <!-- 映射多对一关联关系 -->
+        <many-to-one name="customer" class="Customer">
+        	<column name="CUSTOMER_ID"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
+

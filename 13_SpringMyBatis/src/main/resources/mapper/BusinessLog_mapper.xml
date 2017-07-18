@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.core.model.BusinessLog">
+
+    <!--一对多映射关联-->
+    <!--方法一-->
+    <insert id="saveBusinessLog" parameterType="com.opslab.core.model.BusinessLog">
+        INSERT INTO j2eebase.ops_rt_businesslog
+            (ID,
+             USERNAME,
+             START_TIME,
+             END_TIME,
+             OPERATION_TYPE,
+             BUSINESS_NAME,
+             OPERATION_NAME,
+             OPERATION_PARAM,
+             RESULT,
+             MSG)VALUES (
+             #{id},
+            #{userName},
+            #{startTime},
+            #{endTime},
+            #{type},
+            #{businessName},
+            #{operationName},
+            #{operationParam},
+            #{result},
+            #{msg})
+    </insert>
+
+    <!--查询业务日志-->
+    <select id="page" parameterType="map" resultMap="BusinessLogResultMap">
+        select * from ops_rt_businesslog
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="uri != null">
+                and uri = #{uri}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="BusinessLogResultMap" type="com.opslab.core.model.BusinessLog">
+        <id property="id" column="id"></id>
+        <result property="businessName" column="BUSINESS_NAME"></result>
+        <result property="operationName" column="OPERATION_NAME"></result>
+    </resultMap>
+</mapper>

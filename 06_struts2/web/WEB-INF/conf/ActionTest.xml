@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="action" namespace="/action" extends="struts-default">
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+	
+	
+		<!-- 利用ActionContext访问WEB资源 -->
+		<action name="ActionContextTest" class="st2Demo.Action.ActionContext_Test" method="execute">
+			<result name="success">/Action/ActionContextTestResult.jsp</result>
+		</action>
+		
+		
+		<!-- 利用*Aware即可访问WEB资源 -->
+		<action name="ActionAwareTest" class="st2Demo.Action.AwareAction" method="execute">
+			<result name="success">/Action/ActionAwareTestResult.jsp</result>
+		</action>
+		
+		<!-- 利用servletActionContext获取WEB资源 -->
+		<action name="ServletActionContextTest" class="st2Demo.Action.ServletActionContext_Test" method="execute">
+			<result name="success">/Action/ServletActionContextTestResult.jsp</result>
+		</action>
+		
+		<!-- 通过实现servletXXXAware接口访问WEB资源 -->
+		<action name="ServletActionAwareTest" class="st2Demo.Action.ServletAwareAction" method="execute">
+			<result name="success">/Action/ServletAwareResult.jsp</result>
+		</action>
+	</package>
+</struts>

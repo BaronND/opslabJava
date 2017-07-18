@@ -1,0 +1,43 @@
+package generateCode.generate;
+
+
+import evilp0s.SysUtil;
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
+import java.io.*;
+import java.util.Map;
+
+public class FreeMarkerFactory {
+
+    public static String  TEMPLATE_PATH =System.getProperty("user.dir")+"/src/generateCode/template/";
+
+    public static Configuration getFreemarkercfg() throws IOException {
+        //1.创建配置实例
+        //2.创建数据模型
+        //3.获得模板
+        //4.合并模板和数据模型
+
+        //创建配置实例
+        Configuration freemarkercfg = new Configuration();
+        //设置Freemaker的模板目录
+        freemarkercfg.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
+        //设置检索数据的模式
+        freemarkercfg.setObjectWrapper(new DefaultObjectWrapper());
+
+        return freemarkercfg;
+    }
+
+    public static String handleTemplate(Template template,Map root) throws IOException, TemplateException {
+        //合并模板和数据模型
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Writer out = new OutputStreamWriter(baos);
+        template.process(root, out);
+        out.flush();
+        return baos.toString();
+    }
+
+
+}

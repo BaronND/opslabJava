@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+		
+		
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+	<!-- 利用spring发布webservices -->
+	<jaxws:endpoint id="hellows" 
+		implementor="cxfDemo.Spring.SEIImpl.orderWSImpl"
+		address="http://localhost:8888/services/spring/orderWSImple" />
+		
+	
+	<!-- 利用spring发布webservices并为其配置日志拦截器 -->
+	<jaxws:endpoint id="InterceptorTest"
+		implementor="cxfDemo.Interceptor.SEIImpl.InterceptorTestImpl"
+		address="http://localhost:8888/services/spring/interceptor/interceptorWS">
+		<jaxws:inInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		</jaxws:outInterceptors>
+	</jaxws:endpoint>
+		
+	<!-- 利用spring发布webservices，并为其配置自定义拦截器，用户授权校验 -->
+	<jaxws:endpoint id="MyInterceptorWS"
+		implementor="cxfDemo.myInterceptor.SEIImpl.MyInterceptorWSImpl"
+		address="http://localhost:8888/services/spring/myinterceptor/interceptorWS">
+		<jaxws:inInterceptors>
+			<bean class="cxfDemo.myInterceptor.Interceptor.myInterceptor">
+				<constructor-arg name="username" value="admin"/>
+				<constructor-arg name="password" value="admin"/>
+			</bean>
+		</jaxws:inInterceptors>
+	</jaxws:endpoint>
+	
+</beans>

@@ -1,0 +1,66 @@
+2016-09-26 17:55:31 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:55:31 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:55:31 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:55:31  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:95] - Businsss-AopLog: [2016-09-26 17:55:31 - success] -> null(null)
+2016-09-26 17:57:53 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:57:53 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:57:53 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:57:53  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:95] - Businsss-AopLog: [2016-09-26 17:57:53 - success] -> null(null)
+2016-09-26 17:58:01 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:58:11 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:58:11 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:58:28  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:95] - Businsss-AopLog: [2016-09-26 17:58:01 - success] -> null(null)
+2016-09-26 17:59:27 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 17:59:27 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:59:27 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 17:59:27  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:95] - Businsss-AopLog: [2016-09-26 17:59:27 - success] -> null(null)
+2016-09-26 18:00:06 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:00:06 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:00:06 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:00:06  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:95] - Businsss-AopLog: [2016-09-26 18:00:06 - success] -> null(null)
+2016-09-26 18:02:16 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:02:16 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:02:16 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:02:16  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-09-26 18:02:16 - success] -> com.opslab.framework.common.service.impl.LoginServiceImpl::login(["10001","c4ca4238a0b923820dcc509a6f75849b"])
+2016-09-26 18:02:40 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:02:48 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:02:48 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:03:19  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-09-26 18:02:39 - success] -> com.opslab.framework.common.service.impl.LoginServiceImpl::login(["10001","c4ca4238a0b923820dcc509a6f75849b"])
+2016-09-26 18:03:42 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:03:42 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:03:42 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:03:42  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-09-26 18:03:42 - success] -> com.opslab.framework.common.service.impl.LoginServiceImpl::login(["10001","c4ca4238a0b923820dcc509a6f75849b"])
+2016-09-26 18:03:58 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:04:15 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:04:15 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:11:55 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:114] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:11:55 DEBUG [com.opslab.framework.common.dao.impl.DBUtilsImpl:99] - select * from ops_re_userinfo t where t.userCode=? and t.password=?[parameter]:[10001, c4ca4238a0b923820dcc509a6f75849b]
+2016-09-26 18:11:55  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:96] - Businsss-AopLog: [2016-09-26 18:11:54 - success] -> com.opslab.framework.common.service.impl.LoginServiceImpl::login(["10001","c4ca4238a0b923820dcc509a6f75849b"])
+2016-09-26 18:12:31  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:?] - Businsss-AopLog: [2016-09-26 18:03:58 - success] -> com.opslab.framework.common.service.impl.LoginServiceImpl::login(["10001","c4ca4238a0b923820dcc509a6f75849b"])

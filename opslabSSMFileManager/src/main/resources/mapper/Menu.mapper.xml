@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.imagemanager.domain.Menu">
+
+
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="MenuResultMap">
+        select * from t_ops_menumanager
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pid != null">
+                and pid = #{pid}
+            </if>
+            <if test="isPidNull">
+                and pid is null
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+            <if test="isAddressNull">
+                and address is null
+            </if>
+            <if test="address != null">
+                and address like #{address}
+            </if>
+            <if test="name != null">
+                and name like #{name}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+        </where>
+        order by time asc
+    </select>
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) from t_ops_menumanager
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pid != null">
+                and pid = #{pid}
+            </if>
+            <if test="isPidNull">
+                and pid is null
+            </if>
+
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+            <if test="isAddressNull">
+                and address is null
+            </if>
+            <if test="address != null">
+                and address like #{address}
+            </if>
+            <if test="name != null">
+                and name like #{name}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="MenuResultMap" type="com.opslab.imagemanager.domain.Menu">
+        <id property="id" column="id"></id>
+        <result property="pId" column="pId"></result>
+        <result property="name" column="name"></result>
+        <result property="time" column="time"></result>
+        <result property="type" column="type"></result>
+        <result property="valid" column="valid"></result>
+        <result property="address" column="address"></result>
+    </resultMap>
+</mapper>

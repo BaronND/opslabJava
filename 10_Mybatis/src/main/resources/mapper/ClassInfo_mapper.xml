@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.mybatis.model.ClassInfo">
+
+    <!--一对多映射关联-->
+    <!--方法一-->
+    <select id="method1" parameterType="int" resultMap="ClassInfoResultMap">
+        select * from Team t,Student s where  t.id = s.cid and   t.id =#{id}
+    </select>
+    <select id="getLoader" parameterType="int" resultType="loader">
+        SELECT
+        t_id id,
+        t_name name
+        FROM loader t where t.t_id = #{id}
+    </select>
+    <!--定义映射关系-->
+    <resultMap id="ClassInfoResultMap" type="classInfo">
+        <id property="id" column="id"></id>
+        <result property="name" column="c_name"></result>
+        <association property="loader" column="l_id" javaType="loader" select="getLoader"></association>
+        <collection property="students" ofType="student">
+            <id property="id" column="sid"></id>
+            <result property="name" column="sname"></result>
+        </collection>
+    </resultMap>
+
+    <!--第二种方式-->
+    <select id="method2" parameterType="int" resultMap="ClassInfoResultMap1">
+        select * from Team t  where    t.id =#{id}
+    </select>
+
+    <!--查询一个班的学生-->
+    <select id="getStudents" parameterType="int" resultType="student">
+        SELECT
+          sid id,
+          sname name
+        FROM student s where s.cid = #{id}
+    </select>
+    <!--定义映射关系-->
+    <resultMap id="ClassInfoResultMap1" type="classInfo">
+        <id property="id" column="id"></id>
+        <result property="name" column="c_name"></result>
+        <association property="loader" column="l_id" javaType="loader" select="getLoader"></association>
+        <collection property="students" ofType="student" column="id" select="getStudents"></collection>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,25 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<!-- 使用基于字段的验证 -->
+    <field name="id">
+	     <field-validator type="conversion" short-circuit="true">
+				<message>Conversion Error Occurred</message>
+		 </field-validator>
+         <field-validator type="int">
+             <param name="min">16</param>
+             <param name="max">80</param>
+             <message>提示：id needs to be between ${min} and ${max}</message>
+         </field-validator>
+     </field>
+     
+     <field name="name">
+         <field-validator type="requiredstring"  short-circuit="true">
+         	 <param name="trim">true</param>
+             <message>提示：name is required</message>
+         </field-validator>
+     </field>
+</validators>

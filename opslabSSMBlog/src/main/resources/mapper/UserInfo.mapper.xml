@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.blog.admin.domain.UserInfo">
+
+    <insert id="insert" parameterType="com.opslab.blog.admin.domain.UserInfo">
+        insert into t_ops_userinfo(
+            userCode,
+            name,
+            email,
+            password,
+            createTime,
+            status,
+            deptId
+          )values(
+            #{userCode},
+            #{name},
+            #{email},
+            #{password},
+            #{createTime},
+            #{status},
+            #{deptId}
+          )
+
+    </insert>
+
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="UserInfoResultMap">
+        select * from t_ops_userinfo
+        <where>
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+            <if test="userCode != null">
+                and userCode = #{userCode}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) count from t_ops_userinfo
+        <where>
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+            <if test="userCode != null">
+                and userCode = #{userCode}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+        </where>
+    </select>
+
+    <select id="userListByDeptId" parameterType="map" resultMap="UserInfoResultMap">
+        select * from t_ops_userinfo
+        <where>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+
+    <resultMap id="UserInfoResultMap" type="com.opslab.blog.admin.domain.UserInfo">
+        <id property="userId" column="userId"></id>
+        <result property="userCode" column="userCode"></result>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+        <result property="password" column="password"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="status" column="status"></result>
+        <result property="deptId" column="deptId"></result>
+    </resultMap>
+
+
+</mapper>

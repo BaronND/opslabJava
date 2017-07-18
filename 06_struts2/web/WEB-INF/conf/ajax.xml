@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="ajax" namespace="/ajax" extends="struts-default">
+		<action name="ajaxTestAction" class="st2Demo.ajax.AjaxTestAction">
+			<result>/ajax/AjaxTest.jsp</result>
+		</action>
+		
+		<!-- 使用ajax实现的Action注册程序 -->
+		<action name="ajaxRegisterAction" class="st2Demo.ajax.ajaxRegisterAction">
+			<result name="input">/ajax/AjaxRegister.jsp</result>
+			<result name="success">/ajax/success.jsp</result>
+		</action>
+	</package>
+</struts>

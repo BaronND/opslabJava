@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示jooined-subclass继承映射 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.extend.joined">
+    <class name="goods" table="HBM_TBL_GOODS">
+        <id name="goodsId" type="java.lang.Integer">
+            <column name="GOODS_ID" />
+            <generator class="native" />
+        </id>
+        <property name="goodsName" type="java.lang.String">
+            <column name="GOODS_NAME" />
+        </property>
+        <property name="goodsFunction" type="java.lang.String">
+            <column name="GOODS_FUNCTION" />
+        </property>
+        
+        <!-- 利用jonied映射继承类 -->
+        <joined-subclass name="computer" table="HBM_TBL_GOODS_computer">
+        	<key column="GOODS_ID"></key>
+        	<property name="cpu" type="java.lang.String"></property>
+        	<property name="gpu" type="java.lang.String"></property>
+        	<property name="mainboard" type="java.lang.String"></property>
+        	<property name="memory" type="java.lang.String"></property>
+        </joined-subclass>
+        
+        <joined-subclass name="mobilePhone" table="HBM_TBL_GOODS_mobilePhone">
+        	<key column="GOODS_ID"></key>
+        	<property name="cpu"  type="java.lang.String"></property>
+        	<property name="memory"  type="java.lang.String"></property>
+        	<property name="NetworkChip"  type="java.lang.String"></property>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

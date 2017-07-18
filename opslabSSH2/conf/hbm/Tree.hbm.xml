@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="app.entries.Tree" table="TBL_HBM_TREE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="treeId" type="java.lang.String">
+            <column name="TREE_ID" />
+        </property>
+        <property name="treeName" type="java.lang.String">
+            <column name="TREE_NAME" />
+        </property>
+        <property name="parentId" type="java.lang.String">
+            <column name="PARENT_ID" />
+        </property>
+        <property name="treeTypeId" type="java.lang.String">
+            <column name="TREETYPE_ID" />
+        </property>
+        <property name="treeTypeName" type="java.lang.String">
+            <column name="TREETYPE_NAME" />
+        </property>
+        <property name="rootId" type="java.lang.String">
+            <column name="ROOT_ID" />
+        </property>
+        <property name="rootName" type="java.lang.String">
+            <column name="ROOT_NAME" />
+        </property>
+        <property name="isLeaf" type="boolean">
+            <column name="IS_LEAF" />
+        </property>
+        <property name="isValid" type="boolean">
+            <column name="IS_VALID" />
+        </property>
+        <property name="allName"  type="java.lang.String">
+        	<column name="all_name"></column>
+        </property>
+    </class>
+</hibernate-mapping>

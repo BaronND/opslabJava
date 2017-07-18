@@ -1,0 +1,14 @@
+2016-09-29 20:52:26 ERROR [org.hibernate.property.BasicPropertyAccessor:121] - HHH000123: IllegalArgumentException in class: com.opslab.framework.base.entity.Menu, setter method of property: valid
+2016-09-29 20:52:26 ERROR [org.hibernate.property.BasicPropertyAccessor:122] - HHH000091: Expected type: boolean, actual value: java.lang.String
+2016-09-29 20:52:26 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:87] - IllegalArgumentException occurred while calling setter for property [com.opslab.framework.base.entity.Menu.valid (expected type = boolean)]; target = [com.opslab.framework.base.entity.Menu@1e3e1014], property value = [1]
+IllegalArgumentException occurred while calling setter for property [com.opslab.framework.base.entity.Menu.valid (expected type = boolean)]; target = [com.opslab.framework.base.entity.Menu@1e3e1014], property value = [1]
+	at com.opslab.framework.base.dao.impl.SuperQueryDaoImpl.query(SuperQueryDaoImpl.java:141)
+	at com.opslab.framework.base.service.impl.MenuServiceImpl.list(MenuServiceImpl.java:19)
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:72)
+	at com.opslab.framework.base.action.MenuAction.list(MenuAction.java:28)
+	at com.opslab.framework.base.action.SuperActionTest.httpGet(SuperActionTest.java:136)
+	at com.opslab.framework.base.action.SuperActionTest.httpInfo(SuperActionTest.java:216)
+	at com.opslab.framework.base.action.MenuActionTest.testList(MenuActionTest.java:11)
+
+2016-09-29 20:52:26  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-09-29 20:52:26 - exception] -> com.opslab.framework.base.service.impl.MenuServiceImpl::list([])
+2016-09-29 20:53:54  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-09-29 20:53:53 - success] -> com.opslab.framework.base.service.impl.MenuServiceImpl::list([])

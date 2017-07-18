@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="hibernate3.POJO.oracle">
+    <class name="UserTablesVO" table="USER_TABLES">
+        <id name="tableName" type="java.lang.String">
+            <column name="TABLE_NAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="tableSpaceName" type="java.lang.String">
+            <column name="TABLESPACE_NAME" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+        <property name="logging" type="java.lang.String">
+            <column name="LOGGING" />
+        </property>
+    </class>
+    
+    <class name="UserTabColumnsVO" table="USER_TAB_COLUMNS">
+    	<id name="columnId">
+    		<column name="column_Id"></column>
+    		<generator class="assigned"></generator>
+    	</id>
+    	
+    	<property name="columnName" type="java.lang.String">
+    		<column name="column_name"></column>
+    	</property>
+    	
+    	<property name="tableName" type="java.lang.String">
+    		<column name="table_name"></column>
+    	</property>
+    	
+    	<property name="dataType" type="java.lang.String">
+    		<column name="data_type"></column>
+    	</property>
+    	
+    	<property name="nullAble">
+    		<column name="nullable"></column>
+    	</property>
+    	
+    	<property name="dataLength" type="java.lang.String">
+    		<column name="data_length"></column>
+    	</property>
+    </class>
+</hibernate-mapping>

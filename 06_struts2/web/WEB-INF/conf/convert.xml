@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="converter" namespace="/converter" extends="struts-default">
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+
+		<!-- 类型转行 -->
+		<action name="dataconvert" class="st2Demo.convert.demo.action.DateConvertAction" method="execute">
+			<result name="input">/converter/DateConvert.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+
+		<!-- 通过为字段指定自定义的类型转换器实现从字符串到Date类型的转换 -->
+		<action name="dateconvertimpl" class="st2Demo.convert.ActionTest.DateConvertAction" method="execute">
+			<result name="input">/converter/DateConvert_impl.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+		<!-- 当action和model不在同一个类中，并且不在同一个包中，类型转换器需要使用model-conversion.properties并且在要和model在同一包中 -->
+		<action name="dateconvertModel" class="st2Demo.convert.model.Action.PersonAction" method="execute">
+			<result name="input">/converter/DateConvert_model.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+		<!-- 通过读取web.xml的配置信息，生成一个时间类型的转换器 -->
+		<action name="dateconvertXML" class="st2Demo.convert.configXML.ACTION.PersonAction" method="execute">
+			<result name="input">/converter/DateConvert_xml.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+		<!-- 测试符合类型 -->
+		<action name="complext" class="st2Demo.convert.complext.Action.complextModelAction" method="execute">
+			<result name="input">/converter/Convert_complext.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+		<!-- 测试集合类型 -->
+		<action name="collectionAction" class="st2Demo.convert.conllect.CRM.TestCollectionAction" method="execute">
+			<result name="input">/converter/Convert_collection.jsp</result>
+			<result name="success">/validate/success.jsp</result>			
+		</action>
+		
+		<!-- 将请求参数分装转换成一个对象 -->
+		<action name="userConverterAction" class="st2Demo.convert.instanceDemo.UserAction">
+			<result name="input">/converter/Convert_user.jsp</result>
+			<result name="success">/validate/success.jsp</result>	
+		</action>
+		
+		<!-- 将请求参数分装转换成一个对象 list -->
+		<action name="userConverterAction" class="st2Demo.convert.instanceDemo.UserListAction">
+			<result name="input">/converter/Convert_listuser.jsp</result>
+			<result name="success">/validate/success.jsp</result>	
+		</action>
+	</package>
+</struts>

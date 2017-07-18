@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示1对1对应关系 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.one2one.foreginKey">
+	<!-- 外键关联映射 -->
+	<class name="Person" table="hbm_tbl2_PERSON">
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="PersonName" type="java.lang.String">
+            <column name="PERSON_NAME" length="30"/>
+        </property>
+        <!-- 映射1对1关联关系 -->
+        <one-to-one name="card" class="Card" cascade="all" property-ref="person"></one-to-one>
+    </class>
+	<class name="Card" table="hbm_tbl2_CARD">
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native"/>
+        </id>
+        <property name="CradName" type="java.lang.String">
+            <column name="CRAD_NAME" />
+        </property>
+        <!-- 映射外键 -->
+       	<many-to-one name="person" class="Person" column="person_id" unique="true"></many-to-one>
+    </class>
+</hibernate-mapping>

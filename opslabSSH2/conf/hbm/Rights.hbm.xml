@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 配置权限相关的映射信息 -->
+<hibernate-mapping>
+	<!-- 映射权限-->
+	<class name="app.entries.Rights" table="TBL_HBM_RIGTHS">
+		<id name="rightsId" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="rightsName" column="rigths_name" not-null="true"/>
+		<property name="rightsCode" column="rigths_code" not-null="true"/>
+		<property name="rightsGroup" column="rigths_group" not-null="true"/>
+		<property name="isBranch" column="is_branch" not-null="true"></property>
+		<property name="address" column="address"/>
+		<property name="rightsDesc" column="rigths_desc"/>
+		<property name="groupId" column="group_id"/>
+		<property name="rootId" column="root_id"/>
+		<property name="isValid" column="is_valid" type="java.lang.Boolean"/>
+		<property name="isPublic" column="is_public" type="java.lang.Boolean"/>
+	</class>
+
+</hibernate-mapping>

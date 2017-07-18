@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示以subclass方式继承 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.extend.subclass">
+    <class name="Employee" table="HBM_TBL_EMPLOYEE" discriminator-value="employee">
+        <id name="EmployeeId" type="java.lang.Integer">
+            <column name="EMPLOYEEID" />
+            <generator class="native" />
+        </id>
+        <!-- 指定辨别者类 -->
+        <discriminator column="employee_type"></discriminator>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        
+        <!-- 使用subclass映射子类 -->
+        <subclass name="Managaer" discriminator-value="manager">
+        	<property name="ManagerDept" type="java.lang.String"></property>
+        </subclass>
+        
+        <subclass name="Loader" discriminator-value="loader">
+        	<property name="LoadDept" type="java.lang.String"></property>
+        </subclass>
+    </class>
+</hibernate-mapping>

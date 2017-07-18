@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示1对1对应关系 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.one2one">
+	<!-- 主键关联映射 -->
+	<class name="Person" table="hbm_tbl_PERSON">
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="PersonName" type="java.lang.String">
+            <column name="PERSON_NAME" length="30"/>
+        </property>
+        <!-- 映射1对1关联关系 -->
+        <one-to-one name="card" class="Card" cascade="all"></one-to-one>
+    </class>
+	<class name="Card" table="hbm_tbl_CARD">
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <!-- 使用主键关联，应用hbm_tbl_person的Id来作为自己的主键 -->
+            <generator class="foreign">
+            	<!-- 此处的person的名字必须与下面的one-to-one的name属性的值一致 -->
+            	<param name="property">person</param>
+            </generator>
+            
+        </id>
+        <property name="CradName" type="java.lang.String">
+            <column name="CRAD_NAME" />
+        </property>
+        <one-to-one name="person" class="Person"  constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

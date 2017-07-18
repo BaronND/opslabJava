@@ -1,0 +1,25 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <field name="username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Name is required</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">4</param>
+			<param name="trim">true</param>
+			<message>length should be between 4 to 10</message>
+		</field-validator>
+     </field>
+     
+    <field name="name">
+    	<field-validator type="requiredstring">
+    		<param name="trim">true</param> 
+    		<message>该字段不能为空</message>
+    	</field-validator>
+    </field>
+</validators>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    <!-- 通过context指定外部引用的属性文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!-- 配置Spring数据源 C3P0-->
+    <!--
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<property name="maxPoolSize" value="${c3p0.pool.size.max}" />
+		<property name="minPoolSize" value="${c3p0.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.pool.size.ini}" />
+		<property name="acquireIncrement" value="${c3p0.pool.size.increment}" />
+	</bean>
+    -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 数据库基本信息配置 -->
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 初始化连接数量 -->
+        <property name="initialSize" value="${druid.initialSize}"/>
+        <!-- 最大并发连接数 -->
+        <property name="maxActive" value="${druid.maxActive}"/>
+        <!-- 最大空闲连接数 -->
+        <!--
+		<property name="maxIdle" value="${druid.maxIdle}" />
+		-->
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="${druid.minIdle}"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${druid.maxWait}"/>
+        <!-- 超过时间限制是否回收 -->
+        <property name="removeAbandoned" value="${druid.removeAbandoned}"/>
+        <!-- 超过时间限制多长； -->
+        <property name="removeAbandonedTimeout" value="${druid.removeAbandonedTimeout}"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}"/>
+        <!-- 用来检测连接是否有效的sql，要求是一个查询语句-->
+        <property name="validationQuery" value="${druid.validationQuery}"/>
+        <!-- 申请连接的时候检测 -->
+        <property name="testWhileIdle" value="${druid.testWhileIdle}"/>
+        <!-- 申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能 -->
+        <property name="testOnBorrow" value="${druid.testOnBorrow}"/>
+        <!-- 归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能  -->
+        <property name="testOnReturn" value="${druid.testOnReturn}"/>
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${druid.maxPoolPreparedStatementPerConnectionSize}"/>
+        <!--属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：
+                监控统计用的filter:stat
+                日志用的filter:log4j
+               防御SQL注入的filter:wall -->
+        <property name="filters" value="${druid.filters}"/>
+    </bean>
+
+
+    <!-- 定义Hibernate的SessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:hbms/*.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <prop key="hibernate.current_session_context_class">
+                    org.springframework.orm.hibernate4.SpringSessionContext
+                </prop>
+                <prop key="javax.persistence.validation.mode">none</prop>
+                <!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+                    <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+                <!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+                    <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</> -->
+                <!-- 配置二级缓存 -->
+                <!-- <prop key="hibernate.cache.use_second_level_cache">true</prop> <prop
+                    key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                    <prop key="hibernate.cache.use_query_cache">true</prop> 这个一定要配上，不然可能会出错 <prop
+                    key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop> -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- 配置hibernteTemplate -->
+    <!--
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    -->
+
+    <!-- 配置 Spirng 的 JdbcTemplate -->
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置 NamedParameterJdbcTemplate, 该对象可以使用具名参数, 其没有无参数的构造器, 所以必须为其构造器指定参数 -->
+    <bean id="namedParameterJdbcTemplate"
+          class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource"></constructor-arg>
+    </bean>
+
+
+    <!-- 管理事务(JDBC局部事务管理策略) -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 配置事务通知属性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- 定义事务传播属性 -->
+        <tx:attributes>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="load*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.opslab.framework.base.service.*.*(..))"
+                      id="txPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+
+    <!-- 业务层的日志记录器 -->
+    <bean id="serviceAopLog" class="com.opslab.framework.base.service.interceptor.ServiceInterceptor"/>
+
+    <!-- 定时任务的日志记录器 -->
+    <bean id="taskAopLog" class="com.opslab.framework.base.service.interceptor.TaskInterceptor"/>
+
+    <aop:config>
+        <!-- 事务切入 -->
+
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.opslab.*..*ServiceImpl.*(..))" order="2"/>
+
+        <!-- 业务日志切入 -->
+        <aop:aspect id="serviceAopLog" ref="serviceAopLog" order="1">
+            <aop:around
+                    pointcut="execution(* com.opslab.*..*ServiceImpl.*(..))  and !bean(businessLogService) and !bean(taskLogService)"
+                    method="logAop"/>
+            <!--只开启ddl的日志
+            <aop:around
+                    pointcut="execution(* com.opslab.*..*ServiceImpl.update*(..))  and !bean(businessLogService) and !bean(taskLogService)"
+                    method="logAop"/>
+            <aop:around
+                    pointcut="execution(* com.opslab.*..*ServiceImpl.save*(..))  and !bean(businessLogService) and !bean(taskLogService)"
+                    method="logAop"/>
+            <aop:around
+                    pointcut="execution(* com.opslab.*..*ServiceImpl.delete*(..))  and !bean(businessLogService) and !bean(taskLogService)"
+                    method="logAop"/>
+            -->
+        </aop:aspect>
+        <!-- 定时任务日志切入 -->
+        <aop:aspect id="taskAopLog" ref="taskAopLog" order="2">
+            <aop:around pointcut="execution(* *..*Task.*(..))" method="logAop" />
+        </aop:aspect>
+    </aop:config>
+</beans>

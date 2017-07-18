@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示union-subclass -->
+<hibernate-mapping package="com.opslab.hibernate.entity.extend.union">
+    <class name="book" table="HBM_TBL_BOOK">
+        <id name="bookId" type="java.lang.Integer">
+            <column name="BOOK_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="bookName" type="java.lang.String">
+            <column name="BOOK_NAME" />
+        </property>
+        <property name="author" type="java.lang.String">
+            <column name="AUTHOR" />
+        </property>
+        <property name="productTime" type="java.util.Date">
+            <column name="PRODUC_TTIME" />
+        </property>
+        
+        <!-- 使用union进行继承映射 -->
+        <union-subclass name="CBook" table="HBM_TBL_CBOOK">
+        	<property name="abstracts" type="java.lang.String"></property>
+        	<property name="contents" type="java.lang.String"></property>
+        </union-subclass>
+        
+     
+        <union-subclass name="JavaBook" table="HBM_TBL_JavaBook">
+        	<property name="cotents" type="java.lang.String"></property>
+        	<property name="coreType" type="java.lang.String"></property>
+        </union-subclass>
+    </class>
+</hibernate-mapping>

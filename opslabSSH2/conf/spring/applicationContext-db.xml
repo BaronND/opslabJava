@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+	<!-- 通过context指定外部引用的属性文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 配置Spring数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<property name="maxPoolSize" value="${c3p0.pool.size.max}" />
+		<property name="minPoolSize" value="${c3p0.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.pool.size.ini}" />
+		<property name="acquireIncrement" value="${c3p0.pool.size.increment}" />
+	</bean>
+
+
+	<!-- 定义Hibernate的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:hbm/*.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop> 
+					<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+				<!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop> 
+					<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</> -->
+				<!-- 配置二级缓存 -->
+				<!-- <prop key="hibernate.cache.use_second_level_cache">true</prop> <prop 
+					key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+					<prop key="hibernate.cache.use_query_cache">true</prop> 这个一定要配上，不然可能会出错 <prop 
+					key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置hibernteTemplate -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 配置 Spirng 的 JdbcTemplate -->
+	<bean id="jdbcTemplate"
+		  class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 配置 NamedParameterJdbcTemplate, 该对象可以使用具名参数, 其没有无参数的构造器, 所以必须为其构造器指定参数 -->
+	<bean id="namedParameterJdbcTemplate"
+		  class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+
+
+	<!-- 管理事务(JDBC局部事务管理策略) -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置事务通知属性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 定义事务传播属性 -->
+		<tx:attributes>
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="load*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* app.service.*.*(..))"
+			id="txPointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+	</aop:config>
+
+	<!-- 业务层的日志记录器 -->
+	<bean id="serviceAopLog" class="app.service.interceptor.ServiceIntercetor" />
+	
+	<!-- 定时任务的日志记录器 -->
+	<bean id="taskAopLog" class="app.service.interceptor.TaskIntercetor"/>
+
+	<aop:config>
+		<!-- 事务切入 -->
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*ServiceImpl.*(..))" order="2" />
+
+		<!-- 业务日志切入 -->
+		<aop:aspect id="serviceAopLog" ref="serviceAopLog" order="1">
+			<aop:around pointcut="execution(* *..*ServiceImpl.*(..))  and !bean(businessLogService) and !bean(taskLogService)" method="logAop" />
+		</aop:aspect>
+		
+		<!-- 定时任务日志切入 -->
+		<aop:aspect id="taskAopLog" ref="taskAopLog" order="2">
+			<aop:around pointcut="execution(* *..*Task.*(..))  and !bean(businessLogService)  and !bean(taskLogService)" method="logAop" />
+		</aop:aspect>
+	</aop:config>
+</beans>

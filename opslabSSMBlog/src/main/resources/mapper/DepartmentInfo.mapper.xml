@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.blog.admin.domain.DepartmentInfo">
+
+    <!--新增-->
+    <insert id="insert" parameterType="com.opslab.blog.admin.domain.DepartmentInfo">
+        insert into t_opt_department(
+            name,
+            parentId,
+            treeType,
+            status,
+            createTime,
+            memo
+          )values(
+            #{name},
+            #{parentId},
+            #{treeType},
+            #{status},
+            #{createTime},
+            #{memo}
+          )
+
+    </insert>
+
+    <insert id="updateValid"   parameterType="map">
+        update t_opt_department set status = #{status}
+        <where>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+        </where>
+    </insert>
+
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="DepartmentInfoResultMap">
+        select * from t_opt_department
+        <where>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="parentId != null">
+                and parentId = #{parentId}
+            </if>
+            <if test="treeType != null">
+                and treeType = #{treeType}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+
+
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) count from t_opt_department
+        <where>
+            <if test="deptId != null">
+                and deptId = #{deptId}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="parentId != null">
+                and parentId = #{parentId}
+            </if>
+            <if test="treeType != null">
+                and treeType = #{treeType}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+
+
+
+    <resultMap id="DepartmentInfoResultMap" type="com.opslab.blog.admin.domain.DepartmentInfo">
+        <id property="deptId" column="deptId"></id>
+        <result property="name" column="name"></result>
+        <result property="parentId" column="parentId"></result>
+        <result property="treeType" column="treeType"></result>
+        <result property="status" column="status"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="memo" column="memo"></result>
+    </resultMap>
+
+
+</mapper>

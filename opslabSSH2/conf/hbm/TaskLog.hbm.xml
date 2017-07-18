@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-10-17 22:51:04 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="app.entries.TaskLog" table="TBL_HBM_TASKLOG">
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="taskName" type="java.lang.String">
+            <column name="TASKNAME" />
+        </property>
+        <property name="taskType" type="java.lang.String">
+            <column name="TASKTYPE" />
+        </property>
+        <property name="startTime" type="java.util.Date">
+            <column name="STARTTIME" />
+        </property>
+        <property name="CodeId" type="java.lang.String">
+            <column name="CODEId" />
+        </property>
+        <property name="Params" type="java.lang.String">
+            <column name="PARAMS" />
+        </property>
+        <property name="result" type="java.lang.String">
+            <column name="RESULT" />
+        </property>
+        <property name="msg" type="java.lang.String">
+            <column name="MSG" />
+        </property>
+    </class>
+</hibernate-mapping>

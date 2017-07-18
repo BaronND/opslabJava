@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--导入资源文件-->
+    <properties resource="db.properties"/>
+
+    <!--定义别名-->
+
+<!-- 下面是官方给出的解释
+    With this configuration, Blog can now be used anywhere that domain.blog.Blog could be.
+
+    You can also specify a package where MyBatis will search for beans. For example:
+
+    <typeAliases>
+        <package name="domain.blog"/>
+    </typeAliases>
+    Each bean found in domain.blog , if no annotation is found, will be registered as an alias using uncapitalized non-qualified class name of the bean. Thas is domain.blog.Author will be registered as author. If the @Alias annotation is found its value will be used as an alias. See the example below:
+
+    @Alias("author")
+    public class Author {
+    ...
+    }
+-->
+
+    <typeAliases>
+        <package name="com.opslab.mybatis.model"></package>
+    </typeAliases>
+    <!--配置数据源-->
+    <environments default="development">
+        <environment id="development">
+            <!--配置事务管理方式-->
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${name}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+
+
+    <!--引入配置文件-->
+    <mappers>
+        <!--以xml方式配置操作接口-->
+        <mapper resource="mapper/UserInfo_mapper.xml"/>
+        <mapper resource="mapper/UserInfo_mapper2.xml"/>
+
+
+        <!--以接口的方式实现-->
+        <mapper class="com.opslab.mybatis.mapper.IUserInfoMapper"/>
+        <!--resultMap constructor-->
+        <mapper resource="mapper/UserInfo_constructor.xml"/>
+        <!--一对一映射-->
+        <mapper resource="mapper/Team_mapper.xml"/>
+        <!--一对多映射-->
+        <mapper resource="mapper/ClassInfo_mapper.xml"/>
+
+        <!--动态SQL-->
+        <mapper resource="mapper/UserInfo_dynamicSQL.xml"/>
+        <mapper resource="mapper/UserInfo_choose.xml"/>
+        <mapper resource="mapper/UserInfo_foreach.xml"/>
+
+
+    </mappers>
+</configuration>

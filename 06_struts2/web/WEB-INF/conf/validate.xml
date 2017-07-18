@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="validate" namespace="/validate" extends="struts-default">
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+
+		<!-- 类型转行 -->
+		<action name="baseAction" class="st2Demo.validate.Action.BaseAction" method="execute">
+			<result name="input">/validate/input.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+		<!-- 类型转行 simple主题测试 -->
+		<action name="simpleBaseAction" class="st2Demo.validate.Action.BaseAction" method="execute">
+			<result name="input">/validate/input_simple.jsp</result>
+			<result name="success">/validate/success.jsp</result>
+		</action>
+		
+	</package>
+</struts>

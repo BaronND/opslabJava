@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.core.model.UserInfo">
+
+    <!--一对多映射关联-->
+
+
+    <!--根据用户ID查询用户-->
+    <select id="queryUser" parameterType="map" resultMap="UserInfoResultMap">
+        select * from ops_re_userinfo
+        <where>
+            <if test="userid != null">
+                and userid = #{userid}
+            </if>
+            <if test="userCode != null">
+                and userCode = #{userCode}
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+            <if test ="deptId != null">
+                and deptId = #{deptId}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="UserInfoResultMap" type="com.opslab.core.model.UserInfo">
+        <id property="id" column="userId"></id>
+        <result property="userCode" column="userCode"></result>
+        <result property="userName" column="userName"></result>
+        <result property="valid" column="valid"></result>
+        <result property="deptId" column="deptId"></result>
+    </resultMap>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.domain.UserInfo">
+
+
+
+    <!--查询业务日志-->
+    <select id="page" parameterType="map" resultMap="UserInfoResultMap">
+        select * from t_opt_userinfo
+        <where>
+            <if test="Id != null">
+                and Id = #{Id}
+            </if>
+            <if test="ename != null">
+                and ename = #{ename}
+            </if>
+        </where>
+    </select>
+
+
+
+    <resultMap id="UserInfoResultMap" type="com.opslab.domain.UserInfo">
+        <id property="id" column="id"></id>
+        <result property="ename" column="ename"></result>
+        <result property="cname" column="cname"></result>
+    </resultMap>
+</mapper>

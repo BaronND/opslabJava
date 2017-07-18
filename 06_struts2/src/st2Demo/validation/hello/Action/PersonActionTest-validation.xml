@@ -1,0 +1,32 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="person">
+		<field-validator type="visitor">
+			<param name="context">complext</param>
+			<param name="appendPrefix">true</param>
+			<message>User:</message>
+		</field-validator>
+	</field>
+	
+	<!-- 使用基于字段的验证 -->
+	<!-- 注意此处直接使用了复合类型的字段名 -->
+	<!-- 
+    <field name="id">
+         <field-validator type="int">
+             <param name="min">16</param>
+             <param name="max">80</param>
+             <message>错误消息提示：id属性取值范围16~80</message>
+         </field-validator>
+     </field>
+     
+    <field name="name">
+    	<field-validator type="requiredstring">
+    		<param name="trim">true</param> 
+    		<message>该字段不能为空</message>
+    	</field-validator>
+    </field>
+     -->
+</validators>

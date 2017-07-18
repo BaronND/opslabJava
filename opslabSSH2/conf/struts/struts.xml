@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!-- 配置国际化资源文件 -->
+    <constant name="struts.custom.i18n.resources" value="i18n"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="app-default" extends="struts-default" namespace="/">
+
+        <!-- 定义一个有日志打印的拦截器栈 -->
+        <interceptors>
+            <interceptor name="log" class="app.struts.interceptor.LogInterceptor"/>
+            <interceptor-stack name="logstack">
+                <interceptor-ref name="log"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+
+        <default-interceptor-ref name="logstack"></default-interceptor-ref>
+        <!-- 定义全局结果 -->
+        <global-results>
+            <result name="success">/common/success.jsp</result>
+            <result name="error">/common/error.jsp</result>
+            <result name="serviceException">/common/serviceException.jsp</result>
+        </global-results>
+
+        <!--定义全局的异常映射-->
+        <global-exception-mappings>
+            <exception-mapping result="serviceException"
+                               exception="app.exception.ServicesException"/>
+            <exception-mapping result="naming"
+                               exception="javax.naming.NamingException"/>
+        </global-exception-mappings>
+
+    </package>
+    <!-- 包含其他文件 -->
+    <include file="struts/struts-*-config.xml"></include>
+</struts>

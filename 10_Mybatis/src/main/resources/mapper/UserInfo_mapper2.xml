@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opslab.mybatis.model.UserInfo2">
+
+    <!--很多时候数据表的字段和实体类的字段上肯定存在这一定的差异
+        此时就需要明确的给出其对于关系
+    -->
+    <resultMap id="UserInfo2" type="com.opslab.mybatis.model.UserInfo2">
+        <result column="id" property="userId"/>
+        <result column="name" property="userName"/>
+        <result column="nick" property="userNick"/>
+        <result column="age" property="userAge"/>
+    </resultMap>
+
+    <!--插入数据-->
+    <insert id="save" parameterType="com.opslab.mybatis.model.UserInfo2">
+        insert into t_userinfo(id,name,nick,age)
+          value(#{userId},#{userName},#{userNick},#{userAge})
+    </insert>
+
+    <!--查询全部的数据-->
+    <select id="selectAll" resultMap="UserInfo2">
+        select * from t_userinfo
+    </select>
+</mapper>

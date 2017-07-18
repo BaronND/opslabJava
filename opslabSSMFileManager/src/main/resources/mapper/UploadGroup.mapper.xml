@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.imagemanager.domain.UploadGroup">
+
+
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="UploadGroupResultMap">
+        select * from t_ops_uploadgroup
+        <where>
+            <if test="id != null">
+                and gid = #{id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="selectUploadGroupClient" parameterType="int" resultMap="UploadGroupClient">
+        select * from t_ops_uploadgroup_client where gid = #{id}
+    </select>
+
+    <resultMap id="UploadGroupClient" type="com.opslab.imagemanager.domain.UploadGroupClient">
+        <id property="gid" column="gid"></id>
+        <result property="ip" column="ip"></result>
+    </resultMap>
+
+    <select id="selectUploadGroupHandler" parameterType="int" resultMap="UploadGroupHandler">
+        select * from t_ops_uploadgroup_handlers where gid = #{gid}
+    </select>
+
+    <resultMap id="UploadGroupHandler" type="com.opslab.imagemanager.domain.UploadGroupHandler">
+        <id property="gid" column="gid"></id>
+        <result property="name" column="name"></result>
+        <result property="type" column="type"></result>
+        <result property="path" column="path"></result>
+        <result property="handler" column="handler"></result>
+    </resultMap>
+
+    <resultMap id="UploadGroupResultMap" type="com.opslab.imagemanager.domain.UploadGroup">
+        <id property="gid" column="gid"></id>
+        <result property="name" column="name"></result>
+        <result property="suffixs" column="suffixs"></result>
+        <result property="path" column="path"></result>
+        <result property="originalPath" column="originalPath"></result>
+        <result property="limit" column="limit"></result>
+        <collection property="clients" javaType="ArrayList" column="gid" ofType="UploadGroupClient"
+                    select="selectUploadGroupClient"/>
+        <collection property="handlers" javaType="ArrayList" column="gid" ofType="selectUploadGroupHandler"
+                    select="selectUploadGroupHandler"/>
+    </resultMap>
+</mapper>

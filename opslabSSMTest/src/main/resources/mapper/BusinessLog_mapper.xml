@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.system.model.BusinessLog">
+
+    <!--save-->
+    <insert id="save" parameterType="com.opslab.system.model.BusinessLog">
+        INSERT INTO T_TEST_MODEL (
+           id,
+         userName,
+         startTime,
+         endTime,
+         businessName,
+         operationName,
+         operationParam,
+         type,
+         result,
+         msg
+        ) values (
+            #{id},
+          #{userName},
+          #{startTime},
+          #{endTime},
+          #{businessName},
+          #{operationName},
+          #{operationParam},
+          #{type},
+          #{result},
+          #{msg})
+    </insert>
+
+    <!--select-->
+    <select id="page" parameterType="map" resultMap="BusinessLogResultMap">
+        select * from T_TEST_MODEL 
+        <where>
+            <if test="kid != null">
+                and kid = #{kid}
+            </if>
+        </where>
+    </select>
+
+    <--result mapper-->
+    <resultMap id="BusinessLogResultMap" type="com.opslab.system.model.BusinessLog">
+        <id property="kid" column="kid"></id>
+            <result property="id" column="id"></result>
+        <result property="userName" column="userName"></result>
+        <result property="startTime" column="startTime"></result>
+        <result property="endTime" column="endTime"></result>
+        <result property="businessName" column="businessName"></result>
+        <result property="operationName" column="operationName"></result>
+        <result property="operationParam" column="operationParam"></result>
+        <result property="type" column="type"></result>
+        <result property="result" column="result"></result>
+        <result property="msg" column="msg"></result>
+    </resultMap>
+</mapper>

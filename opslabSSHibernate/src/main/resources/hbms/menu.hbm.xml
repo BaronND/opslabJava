@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.Menu" table="OPS_RE_MENU">
+        <id name="id" type="java.lang.String" length="32">
+            <column name="ID"/>
+            <generator class="com.opslab.framework.base.util.IDGenerator"/>
+        </id>
+        <property name="pId" type="java.lang.String" length="48">
+            <column name="pId"/>
+        </property>
+        <property name="address" type="java.lang.String" length="400">
+            <column name="address"/>
+        </property>
+        <property name="name" type="java.lang.String" length="100">
+            <column name="name"/>
+        </property>
+        <property name="type" type="java.lang.String" length="2">
+            <column name="type"/>
+        </property>
+        <property name="valid" type="java.lang.String" length="1">
+            <column name="valid"/>
+        </property>
+        <property name="desc" type="java.lang.String" length="32">
+            <column name="description"/>
+        </property>
+    </class>
+</hibernate-mapping>

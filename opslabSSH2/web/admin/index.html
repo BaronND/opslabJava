@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery EasyUI Layout Demo</title>
+    <link rel="stylesheet" type="text/css" href="../resoure/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../resoure/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css"/>
+    <script type="text/javascript" src="../resoure/jquery.js"></script>
+    <script type="text/javascript" src="../resoure/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../scripts/util.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</head>
+<body class="easyui-layout">
+<div class="north" data-options="region:'north',border:false">
+    <div>
+        <div>
+        </div>
+    </div>
+    <div class="panel-header panel-header-noborder top-toolbar">
+        <div id="infobar">当前用户:sysadmin 用户组:超级管理员</div>
+        <div id="searchbar">
+            <input id="topSearchbox" name="topSearchbox" class="easyui-searchbox"
+                   data-options="width: 350, height: 26, prompt: '请输入您要查找的内容关键词', menu: '#topSearchboxMenu'"/>
+            <div id="topSearchboxMenu" style="width: 85px;">
+                <div data-options="name:'0', iconCls: 'icon-hamburg-zoom'">查询类型</div>
+                <div data-options="name:'1'">测试类型1</div>
+                <div data-options="name:'2'">测试类型2</div>
+                <div data-options="name:'3'">测试类型3</div>
+                <div data-options="name:'4'">测试类型4</div>
+            </div>
+        </div>
+        <div id="buttonbar">
+            <a href="#" class="easyui-linkbutton" data-options="plain:true">清楚缓存</a>
+            <a href="#" class="easyui-linkbutton" data-options="plain:true">全屏模式</a>
+            <a href="#" class="easyui-linkbutton" data-options="plain:true">退出系统</a>
+        </div>
+    </div>
+</div>
+<div class="west" data-options="region:'west',title:'MenuView'">
+    <div id="accordion-demo" class="easyui-accordion" data-options="fit:true,border:true">
+    </div>
+</div>
+<div class="south" data-options="region:'south',border:false">
+    <div id="status"></div>
+</div>
+<div class="center " data-options="region:'center',noheader:true">
+    <div id="tt" class="easyui-tabs" data-options='fit:true,border:false'>
+
+    </div>
+    <div id="w" class="modelWindo easyui-window" title="Modal Window"
+         data-options="modal:true,closed:true,closable:false,collapsible:false,minimizable:false,maximizable:false,resizable:false">
+        <div class="easyui-layout" data-options="fit:true">
+            <div data-options="border:false" style="padding:5px 0 0;">
+                prompt content
+            </div>
+            <div class="dialog-button">
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)"
+                   onclick="javascript:alert('ok');$('#w').window('close');" style="width:80px">Ok</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)"
+                   onclick="javascript:alert('cancel')" style="width:80px">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

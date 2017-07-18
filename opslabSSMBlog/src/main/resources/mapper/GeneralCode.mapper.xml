@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.blog.admin.domain.GeneralCode">
+
+    <!--新增-->
+    <insert id="insert" parameterType="com.opslab.blog.admin.domain.GeneralCode">
+        insert into t_ops_generalcode(codeId,parentId,codeName,codeType,orderId,createTime,treeType,valid,path,memo) values(
+          #{codeId},
+          #{parentId},
+          #{codeName},
+          #{codeType},
+          #{orderId},
+          #{createTime},
+          #{treeType},
+          #{valid},
+          #{path},
+          #{memo}
+        )
+    </insert>
+
+    <!--更新编码的状态-->
+    <update id="updateValid" parameterType="map">
+        update t_ops_generalcode set valid =${valid}
+        <where>
+            <if test="keyId != null">
+                and keyId = #{keyId}
+            </if>
+            <if test="codeId != null">
+                and codeId = #{codeId}
+            </if>
+            <if test="codeType != null">
+                and codeType = #{codeType}
+            </if>
+        </where>
+    </update>
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="GeneralCodeResultMap">
+        select * from t_ops_generalcode
+        <where>
+            <if test="keyId != null">
+                and keyId = #{keyId}
+            </if>
+            <if test="codeId != null">
+                and codeId = #{codeId}
+            </if>
+            <if test="parentId != null">
+                and parentId = #{parentId}
+            </if>
+            <if test="codeName != null">
+                and codeName like #{codeName}
+            </if>
+            <if test="codeType != null">
+                and codeType = #{codeType}
+            </if>
+            <if test="treeType != null">
+                and treeType = #{treeType}
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+        </where>
+        order by orderId asc
+    </select>
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) from t_ops_generalcode
+        <where>
+            <if test="keyId != null">
+                and keyId = #{keyId}
+            </if>
+            <if test="codeId != null">
+                and codeId = #{codeId}
+            </if>
+            <if test="parentId != null">
+                and parentId = #{parentId}
+            </if>
+            <if test="codeName != null">
+                and codeName like #{codeName}
+            </if>
+            <if test="codeType != null">
+                and codeType = #{codeType}
+            </if>
+            <if test="treeType != null">
+                and treeType = #{treeType}
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="GeneralCodeResultMap" type="com.opslab.blog.admin.domain.GeneralCode">
+        <id property="keyId" column="keyId"></id>
+        <result property="codeId" column="codeId"></result>
+        <result property="parentId" column="parentId"></result>
+        <result property="codeName" column="codeName"></result>
+        <result property="codeType" column="codeType"></result>
+        <result property="orderId" column="orderId"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="treeType" column="treeType"></result>
+        <result property="valid" column="valid"></result>
+        <result property="path" column="path"></result>
+        <result property="memo" column="memo"></result>
+    </resultMap>
+</mapper>

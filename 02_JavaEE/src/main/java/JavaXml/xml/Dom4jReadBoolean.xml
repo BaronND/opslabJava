@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Persons>
+    <Person>
+        <name>snake</name>
+        <boolean>true</boolean>
+        <email>snake@163.com</email>
+    </Person>
+    <Person>
+        <name>monkey</name>
+        <boolean>false</boolean>
+        <email>monkey@163.com</email>
+    </Person>
+</Persons>

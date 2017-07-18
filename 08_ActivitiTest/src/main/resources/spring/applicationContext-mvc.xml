@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <!--加入Spring Activiti-Modeler的运行配置 -->
+    <!--
+       <context:component-scan base-package="org.activiti.rest.editor">
+              <context:include-filter type="annotation"
+                                      expression="org.springframework.stereotype.Controller" />
+              <context:include-filter type="annotation"
+                                      expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+       </context:component-scan>
+       <context:component-scan base-package="org.activiti.rest.diagram">
+              <context:include-filter type="annotation"
+                                      expression="org.springframework.stereotype.Controller" />
+              <context:include-filter type="annotation"
+                                      expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+       </context:component-scan>
+        -->
+    <context:component-scan base-package="com.opslab.workflow
+            ,org.activiti.rest.editor.main
+            ,org.activiti.rest.editor.model"
+                            use-default-filters="false">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+
+    <bean
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="mappingJackson2HttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/json;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--释放静态资源 -->
+    <!-- <mvc:resources location="/resource/" mapping="/sources/**"/> <mvc:resources
+        location="/scripts/" mapping="/scripts/**"/> <mvc:resources location="/style/"
+        mapping="/style/**"/> -->
+
+
+    <!-- 配置视图解析器 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <bean id="defaultJsonView"
+          class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven>
+        <!-- 处理responseBody 里面日期类型 -->
+        <mvc:message-converters>
+            <bean
+                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.Role" table="OPS_RE_ROLE">
+        <id name="roleId" type="java.lang.String">
+            <column name="roleId" length="32" />
+           <generator class="com.opslab.framework.base.util.IDGenerator"/>
+        </id>
+        <property name="roleName"  type="java.lang.String">
+            <column name="roleName" />
+        </property>
+        <property name="parentId"  type="java.lang.String">
+            <column name="parentId" length="32"/>
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="createTime" />
+        </property>
+        <property name="valid" type="java.lang.String">
+            <column name="valid" length="1" />
+        </property>
+        <property name="descript" type="java.lang.String">
+        	<column name="descript" length="200"/>
+        </property>
+        <set name="users" table="ops_re_roleuser" lazy="false">
+            <key>
+                <column name="roleId"/>
+            </key>
+            <many-to-many class="com.opslab.framework.base.entity.UserInfo" column="userId"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="token" namespace="/token" extends="struts-default">
+		<!-- token 和 tokenSession拦截器 并不在默认的拦截器栈中 -->
+		<action name="tokenTest" class="st2Demo.token.action.tokenAction">
+			<result>/success.jsp</result>
+		</action>
+		
+		<!-- 使用token拦截器 -->
+		<action name="tokenTestImpl" class="st2Demo.token.action.tokenAction">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token">/error/token-error.jsp</result>
+			<result>/success.jsp</result>
+		</action>
+		
+		<!-- 使用tokenSession拦截器 -->
+		<action name="tokenSessionTestImpl" class="st2Demo.token.action.tokenAction">
+			<interceptor-ref name="tokenSession"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>/success.jsp</result>
+		</action>
+	</package>
+</struts>

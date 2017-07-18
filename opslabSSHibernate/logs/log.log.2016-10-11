@@ -1,0 +1,2 @@
+2016-10-11 14:51:01  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-10-11 14:51:00 - success] -> com.opslab.framework.base.service.impl.GeneralCodeServiceImpl::getGeneralList([])
+2016-10-11 14:54:53  INFO [com.opslab.framework.base.service.interceptor.ServiceInterceptor:94] - Businsss-AopLog: [2016-10-11 14:54:52 - success] -> com.opslab.framework.base.service.impl.GeneralCodeServiceImpl::getGeneralList([])

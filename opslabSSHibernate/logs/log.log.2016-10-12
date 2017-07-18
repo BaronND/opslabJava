@@ -1,0 +1,19 @@
+2016-10-12 16:35:48  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:28] - sql-config:null/sql/
+2016-10-12 16:39:40  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:35] - sql-config:C:\workspace\opslabJ2ee\target\test-classes/sql/
+2016-10-12 18:39:00  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:35] - sql-config:C:\workspace\opslabJ2ee\target\test-classes/sql/
+2016-10-12 18:39:15  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:35] - sql-config:C:\workspace\opslabJ2ee\target\test-classes/sql/
+2016-10-12 18:40:24  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:35] - sql-config:C:\workspace\opslabJ2ee\target\test-classes/sql/
+2016-10-12 18:41:39  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:35] - sql-config:C:\workspace\opslabJ2ee\target\test-classes/sql/
+2016-10-12 21:29:50  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:\workspace\opslabJ2ee\target\classes\/tmp/
+2016-10-12 21:31:44  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:\workspace\opslabJ2ee\target\classes\/tmp/
+2016-10-12 21:32:00  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:\workspace\opslabJ2ee\target\classes\sql/
+2016-10-12 21:32:00 ERROR [com.opslab.framework.base.dao.util.XmlSQLFactory:55] - parse xml error C:\workspace\opslabJ2ee\target\classes\sql\opslab-generalcode-sql.xml:Error on line 1 of document file:///C:/workspace/opslabJ2ee/target/classes/sql/opslab-generalcode-sql.xml : 在 XML 声明中的编码伪属性前面必须有空格。 Nested exception: 在 XML 声明中的编码伪属性前面必须有空格。
+2016-10-12 21:32:50  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:\workspace\opslabJ2ee\target\classes\sql/
+2016-10-12 21:32:50 ERROR [com.opslab.framework.base.dao.util.XmlSQLFactory:55] - parse xml error C:\workspace\opslabJ2ee\target\classes\sql\opslab-generalcode-sql.xml:Error on line 1 of document file:///C:/workspace/opslabJ2ee/target/classes/sql/opslab-generalcode-sql.xml : 在 XML 声明中的编码伪属性前面必须有空格。 Nested exception: 在 XML 声明中的编码伪属性前面必须有空格。
+2016-10-12 21:33:37  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:\workspace\opslabJ2ee\target\classes\sql/
+2016-10-12 21:34:47  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/
+2016-10-12 21:35:31  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:30] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/
+2016-10-12 21:37:45  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:28] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/
+2016-10-12 21:38:12  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:28] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/
+2016-10-12 21:39:02  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:28] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/
+2016-10-12 21:40:55  INFO [com.opslab.framework.base.dao.util.XmlSQLFactory:28] - list config files:C:/workspace/opslabJ2ee/target/classes/sql/

@@ -1,0 +1,101 @@
+/*一个好看的表格样式*/
+table.hovertable {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
+
+table.hovertable th {
+    background-color: #c3dde0;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+
+table.hovertable tr {
+    background-color: #d4e3e5;
+}
+
+table.hovertable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+
+table.gridtable {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    width: 100%;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}
+
+table.gridtable .title {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+    text-align: center;
+}
+
+/*查询面板样式*/
+.query{
+    width: 100%;
+    padding: 1px;
+}
+.query table td{
+    text-align: center;
+}
+
+.datagrid .panel-body{
+    padding: 0px;
+}
+
+/*表单布局*/
+
+.form-row{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-button-row{
+    align-content: center;
+    text-align: center;
+}
+
+.tablepagination{
+    border: 1px solid #95B8E7;
+}
+
+iframe{
+    width:100%;
+    height:100%;
+}
+
+.input-text{
+    width:300px;
+}

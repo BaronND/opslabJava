@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.GeneralCode" table="OPS_RE_GENERALCODE">
+        <id name="id" type="java.lang.String">
+            <column name="ID"/>
+            <generator class="com.opslab.framework.base.util.IDGenerator"/>
+        </id>
+        <property name="codeId" type="java.lang.String">
+            <column name="code_Id"/>
+        </property>
+        <property name="partenId" type="java.lang.String">
+            <column name="partend_id"/>
+        </property>
+        <property name="codeName" type="java.lang.String">
+            <column name="code_Name"/>
+        </property>
+        <property name="codeType" type="java.lang.String">
+            <column name="code_Type"/>
+        </property>
+        <property name="orderId" type="java.lang.String">
+            <column name="order_Id"/>
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="create_Time"/>
+        </property>
+        <property name="tree" type="java.lang.String">
+            <column name="tree"/>
+        </property>
+        <property name="valid" type="java.lang.String">
+            <column name="valid"/>
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="path"/>
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="memo"/>
+        </property>
+    </class>
+</hibernate-mapping>

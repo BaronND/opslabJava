@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示多对多 -->
+<!-- 注意：多对多关联关系必须使用第三张表来记录其关联关系 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.many2many.bidirectional">
+	<!-- 双向多对多 -->
+	    <class name="BRuleInfo" table="hbm_tbl_BRULEINFO">
+        <id name="ruleId" type="java.lang.Integer">
+            <column name="RULE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="ruleName" type="java.lang.String">
+            <column name="RULE_NAME" />
+        </property>
+        <set name="userSet" table="USER_ORM_RULE" inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="RULE_ID" />
+            </key>
+           	<many-to-many class="BUserInfo" column="USER_ID"></many-to-many>
+        </set>
+    </class>
+    
+    <class name="BUserInfo" table="hbm_tbl_BUSERINFO">
+        <id name="userId" type="java.lang.Integer">
+            <column name="USER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USER_NAME" />
+        </property>
+        
+        <!-- 映射集合 -->
+        <set name="ruleSet" table="USER_ORM_RULE" inverse="false" lazy="true" cascade="all">
+        	<!-- 映射本持久化类在USER_ORM_RULE表中的外键 -->
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <!-- 映射ruleSet集合在USER_ORM_RULE表中映射的外键 -->
+            <many-to-many class="BRuleInfo" column="RULE_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+body{
+    padding-top: 55px;
+}
+/* 定义辅助CSS来美化简历头部 */
+body {
+    font-family: 'microsoft yahei', Arial, sans-serif;
+}
+
+.cvheader {
+    border-bottom: 1px solid #DFDFDF;
+    padding-top: 0px;
+    padding-bottom: 2px;
+}
+
+.cvheader h1 {
+    margin: 0;
+}
+
+/* 定义辅助CSS来美化简历主体 */
+
+.cvbody {
+    padding-top: 10px;
+}
+
+.blogmeun {
+    padding-right: 20px;
+}
+
+.bloglist {
+
+}
+
+.panel-heading {
+    height: 50px;
+    line-height: 50px;
+    text-align: center
+}
+.panel-body{
+    margin: 0px;
+}
+
+.rebort{
+    padding-bottom: 45px;
+}
+.bbox {
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}

@@ -1,0 +1,19 @@
+2016-10-13 12:11:13 ERROR [com.opslab.util.JacksonUtil:36] - Jackson to json error :No serializer found for class org.springframework.validation.DefaultMessageCodesResolver and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) ) (through reference chain: org.springframework.ui.ModelMap["org.springframework.validation.BindingResult.log"]->org.springframework.validation.BeanPropertyBindingResult["messageCodesResolver"])
+2016-10-13 12:11:26 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:87] - java.lang.NullPointerException
+	at com.opslab.framework.base.util.SQLUtil.paramsConvert(SQLUtil.java:14)
+	at com.opslab.framework.base.dao.impl.SupportDaoImpl.createQuery(SupportDaoImpl.java:120)
+	at com.opslab.framework.base.dao.impl.SupportDaoImpl.queryPageNameParameter(SupportDaoImpl.java:255)
+	at com.opslab.framework.base.service.impl.UserInfoServiceImpl.list(UserInfoServiceImpl.java:38)
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:72)
+	at com.opslab.framework.base.service.UserInfoServiceTest.testQueryPage(UserInfoServiceTest.java:44)
+
+2016-10-13 12:13:51 ERROR [com.opslab.util.JacksonUtil:36] - Jackson to json error :No serializer found for class org.springframework.validation.DefaultMessageCodesResolver and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) ) (through reference chain: org.springframework.ui.ModelMap["org.springframework.validation.BindingResult.log"]->org.springframework.validation.BeanPropertyBindingResult["messageCodesResolver"])
+2016-10-13 12:14:04 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:87] - java.lang.NullPointerException
+	at com.opslab.framework.base.util.SQLUtil.paramsConvert(SQLUtil.java:14)
+	at com.opslab.framework.base.dao.impl.SupportDaoImpl.createQuery(SupportDaoImpl.java:120)
+	at com.opslab.framework.base.dao.impl.SupportDaoImpl.queryPageNameParameter(SupportDaoImpl.java:255)
+	at com.opslab.framework.base.service.impl.UserInfoServiceImpl.list(UserInfoServiceImpl.java:38)
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:72)
+	at com.opslab.framework.base.service.UserInfoServiceTest.testQueryPage(UserInfoServiceTest.java:44)
+
+2016-10-13 12:16:46 ERROR [com.opslab.util.JacksonUtil:36] - Jackson to json error :No serializer found for class org.springframework.validation.DefaultMessageCodesResolver and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) ) (through reference chain: org.springframework.ui.ModelMap["org.springframework.validation.BindingResult.log"]->org.springframework.validation.BeanPropertyBindingResult["messageCodesResolver"])

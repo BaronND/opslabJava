@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="app.cronTask" />
+	<!--
+		Cron表达式是一个字符串，字符串以5或6个空格隔开，分开工6或7个域，每一个域代表一个含义,
+		Cron有如下两种语法 格式：
+			Seconds Minutes Hours DayofMonth Month DayofWeek Year 或
+			Seconds Minutes Hours DayofMonth Month DayofWeek
+
+	-->
+	<!--
+	<task:scheduled-tasks>   
+        <task:scheduled ref="jobTask" method="task" cron="* 0/5 * * * ? "/>
+	</task:scheduled-tasks> 
+	-->
+</beans>

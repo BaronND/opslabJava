@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root package="com.opslab.framework.base.service.BusinessLogService">
+    <!--利用HQL统计业务日志数量-->
+    <query name="BUSINESSLOG_COUNT_HQL">
+        <queryString>
+            <![CDATA[from BusinessLog]]>
+        </queryString>
+    </query>
+</root>

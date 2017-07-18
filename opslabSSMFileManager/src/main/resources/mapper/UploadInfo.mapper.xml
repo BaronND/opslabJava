@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.imagemanager.domain.UploadInfo">
+
+    <insert id="insert" parameterType="com.opslab.imagemanager.domain.UploadInfo">
+        insert into t_ops_uploadinfo(
+            id,
+            gid,
+            bid,
+            createTime,
+            oldName,
+            newName,
+            status,
+            statusMsg,
+            path,
+            md5,
+            sha1,
+            size
+          )values(
+            #{id},
+            #{gid},
+            #{bid},
+            #{createTime},
+            #{oldName},
+            #{newName},
+            #{status},
+            #{statusMsg},
+            #{path},
+            #{md5},
+            #{sha1},
+            #{size}
+          )
+
+    </insert>
+
+    <!--查询业务日志-->
+    <select id="page" parameterType="map" resultMap="uploadInfoResultMap">
+        select * from t_ops_uploadinfo
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="gid != null">
+                and gid = #{gid}
+            </if>
+            <if test="bid != null">
+                and bid = #{bid}
+            </if>
+            <if test="oldName != null">
+                and oldName like #{oldName}
+            </if>
+            <if test="newName != null">
+                and newName like #{newName}
+            </if>
+            <if test="starttime != null">
+                <![CDATA[
+                and createTime > #{starttime}
+                ]]>
+            </if>
+            <if test="endtime != null">
+                <![CDATA[
+                and  createTime < #{endtime}
+                 ]]>
+            </if>
+            order by createtime asc
+
+        </where>
+    </select>
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) from t_ops_uploadinfo
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="gid != null">
+                and gid = #{gid}
+            </if>
+            <if test="bid != null">
+                and bid = #{bid}
+            </if>
+            <if test="oldName != null">
+                and oldName like #{oldName}
+            </if>
+            <if test="newName != null">
+                and newName like #{newName}
+            </if>
+            <if test="starttime != null">
+                <![CDATA[
+                and createTime > #{starttime}
+                ]]>
+            </if>
+            <if test="endtime != null">
+                <![CDATA[
+                and  createTime < #{endtime}
+                 ]]>
+            </if>
+        </where>
+    </select>
+
+
+
+    <resultMap id="uploadInfoResultMap" type="com.opslab.imagemanager.domain.UploadInfo">
+        <id property="id" column="id"></id>
+        <result property="gid" column="gid"></result>
+        <result property="bid" column="bid"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="oldName" column="oldName"></result>
+        <result property="newName" column="newName"></result>
+        <result property="status" column="status"></result>
+        <result property="statusMsg" column="statusMsg"></result>
+        <result property="path" column="path"></result>
+        <result property="md5" column="md5"></result>
+        <result property="sha1" column="sha1"></result>
+        <result property="size" column="size"></result>
+    </resultMap>
+
+
+</mapper>

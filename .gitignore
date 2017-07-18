@@ -1,0 +1,11 @@
+.vscode/
+.vscode/*
+*.class
+*.pyc
+*.iml
+.idea/
+.idea/*
+target/
+target/*
+.DS_Store
+*/.DS_Store

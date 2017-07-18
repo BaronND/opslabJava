@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-10-17 22:51:04 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.TaskLog" table="OPS_RT_TASKLOG">
+        <id name="Id" type="java.lang.String">
+            <column name="ID" length="32" />
+            <generator class="com.opslab.framework.base.util.IDGenerator" />
+        </id>
+        <property name="ip" type="java.lang.String">
+            <column name="ip" />
+        </property>
+        <property name="taskName" type="java.lang.String">
+            <column name="TASKNAME" />
+        </property>
+        <property name="taskType" type="java.lang.String">
+            <column name="TASKTYPE" />
+        </property>
+        <property name="startTime" type="java.util.Date">
+            <column name="STARTTIME" />
+        </property>
+        <property name="operationName" type="java.lang.String">
+            <column name="operationName" />
+        </property>
+        <property name="operationParam" type="java.lang.String">
+            <column name="operationParam" />
+        </property>
+        <property name="result" type="java.lang.String">
+            <column name="RESULT" />
+        </property>
+        <property name="msg" type="java.lang.String">
+            <column name="MSG" />
+        </property>
+    </class>
+</hibernate-mapping>

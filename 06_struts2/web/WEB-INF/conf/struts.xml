@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置国际化资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="i18n"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<package name="file" namespace="/file" extends="struts-default">
+		<!-- 配置FileUploadInterceptor信息-->
+		<interceptors>
+			<interceptor-stack name="fileupload">
+				<interceptor-ref name="defaultStack">
+					<param name="fileUpload.maximumSize">2000</param>
+					<param name="fileUpload.allowedTypes">text/html,text/xml</param>
+					<param name="fileUpload.allowedExtensions">html,dtd,xml</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="fileupload"></default-interceptor-ref>
+		<!-- 文件上传 -->
+		<action name="Fileupload" class="st2Demo.fileUpload.FileUploadAction">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/upload/fileUpload.jsp</result>
+		</action>
+		<!-- 文件下载 -->
+		<action name="Filedownload" class="st2Demo.fileUpload.FileDownloadAction">
+			<result type="stream">
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		
+	</package>
+	<!-- 
+		package：struts2使用package包来组织起配置的。
+			name：必需数序，用以指定当前包的名称
+			extends:用于指定包的继承关系，一般需要继承struts-default(struts-default.xml)
+			namespace：用于指定访问当前包是需要指定的模式名
+				例如namespace="helloworld"
+			那么访问该包下的helloworld.action就需要按如下的方式访问
+				http://localhost:8080/contentPath/namespace/helloworld.action
+			
+	 -->
+	<package name="helloword" namespace="/helloworld" extends="struts-default">
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+
+		<!-- 
+			配置一个Action：注意struts中的action可以使与servlet不相关的POJO类
+			
+				name:用于指定action的路径，同servlet的路径，注意不包括/和后缀名
+				class:指定action对应的实现类可以是servlet想过的类 也可以是无关的POJO类
+					默认值为:com.opensymphony.xwork2.ActionSupport
+				method:指定调用action实现类中的方法
+					默认方法：execute
+		 -->
+		<action name="helloworld">
+			<result>/helloworld/helloworld.jsp</result>
+		</action>
+		
+		<action name="printURL" class="st2Demo.Action.PrintURLAction" method="printAction">
+			<result>/helloworld/helloworld.jsp</result>
+		</action>
+		<!-- 配置一个product的例子 -->
+		<!-- 
+			次action会派送到st2Demo.helloWorld.Product然后调用save方法，然后根据该方法的返回值
+			"success"派指定dispatch到某处
+		 -->
+		<action name="productAdd" class="st2Demo.helloWorld.Product" method="save">
+			<result name="success">/helloworld/productSee.jsp</result>
+		</action>
+	</package>
+
+
+	<!-- 测试struts标签 -->
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="login" class="st2Demo.tag.userAction" method="login">
+			<result name="input">/tag/formDemo01.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 测试表单标签 -->
+	<package name="formtag" namespace="/form" extends="struts-default">
+		<!-- 测试checkbox标签 -->
+		<action name="checkbox" class="st2Demo.tag.ISagree" method="isAgree">
+			<result name="input">/tag/formDemo_checkbox.jsp</result>
+		</action>
+		
+		<!-- checkboxlist -->
+		<action name="checkboxlist" class="st2Demo.tag.checkboxList" method="execute">
+			<result name="input">/tag/formDemo_checkboxlist.jsp</result>
+		</action>
+		
+		<!-- radio -->
+		<action name="radioAction" class="st2Demo.tag.radioAction" method="sexAction">
+			<result name="input">/tag/formRaidoSelect.jsp</result>
+		</action>
+		
+		
+		<action name="selectAction" class="st2Demo.tag.selectAction" method="cityListAction">
+			<result name="input">/tag/formRaidoSelect.jsp</result>
+		</action>
+		<!-- 一个综合实例 -->
+		<action name="employee*"  class="st2Demo.tagDemo.Action.EmployeeAction" method="{1}Action">
+			<result name="input">/tag/employeeadd.jsp</result>
+			<result name="success">/tag/employeesee.jsp</result>
+		</action>
+	</package>
+	<!-- 一个完整的CURD的例子 -->
+	<package name="curd" namespace="/curd" extends="struts-default">
+		<!-- 修改该包中的默认的拦截器栈 -->
+		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+		<action name="emp-*" class="st2Demo.CRUD.Action.employeeAction" method="{1}Action">
+			<result name="emp-{1}">/curd/emp{1}.jsp</result>
+			<result name="success" type="redirectAction">emp-list</result>
+		</action>
+	</package>
+</struts>

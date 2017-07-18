@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 演示多对多 -->
+<!-- 注意：多对多关联关系必须使用第三张表来记录其关联关系 -->
+<hibernate-mapping package="com.opslab.hibernate.entity.many2many">
+	<!-- 单向多对多 -->
+	<class name="RuleInfo" table="hbm_tbl_RULEINFO">
+        <id name="ruleId" type="java.lang.Integer">
+            <column name="RULE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="ruleName" type="java.lang.String">
+            <column name="RULE_NAME" />
+        </property>
+    </class>
+	
+	
+	<class name="UserInfo" table="USERINFO">
+        <id name="userId" type="java.lang.Integer">
+            <column name="USER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USER_NAME" />
+        </property>
+        <!-- 映射多对多关联关系 -->
+        <!--  tbl_user2rule 指定第三张映射表的表明-->
+        <set name="ruleSet" table="tbl_user2rule" cascade="all">
+        	<!-- 映射当前持久化类在第三张表中对应的字段 -->
+        	<key column="USER_ID"></key>
+        	<!-- 映射集合在第三张表中对应的字段 -->
+        	<many-to-many class="RuleInfo" column="RULE_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

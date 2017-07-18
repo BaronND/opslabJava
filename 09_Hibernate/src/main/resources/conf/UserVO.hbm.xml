@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.opslab.hibernate.entity">
+
+	<!-- 映射类和数据表 -->
+	<class name="VO_user" table="hbm_tbl_userinfo">
+
+		<!-- 映射 OID 和 数据表的主键 -->
+		<id name="recordid" column="recordid">
+			<generator class="native"/>
+		</id>
+
+		<!-- 映射属性和字段 -->
+		<property name="userid" column="userid"/>
+
+			<property name="username" column="username"/>
+
+		<property name="sex" column="sex"/>
+
+		<property name="content" column="content"/>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap的HTML标准模板</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="resoure/bootstrap/css/bootstrap.min.css"/>
+    <!--你自己的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="style/index.css"/>
+    <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="resoure/bootstrap/html5shiv.min.js"></script>
+    <script type="text/javascript" src="resoure/bootstrap/respond.min.js"></script>
+    <![endif]-->
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script type="text/javascript" src="resoure/jquery.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script type="text/javascript" src="resoure/bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript" src="resoure/bootstrap/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+</head>
+<body>
+<!--导航条-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <!--针对移动段小屏浏览器的导航条-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project Name</a>
+        </div>
+        <!--功能导航条-->
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 定义简历的头部 //-->
+
+<div class="container">
+    <div class="row cvheader">
+        <div class="col-lg-2 col-md-2 col-xs-12">
+            <p>
+                <!-- 这里定义图片为响应式，并且添加圆角效果，以便保证图片在不同设备上都可以完美显示 //-->
+                <img data-toggle="tooltip" data-placement="left" id="avatar" title="我是Terry"
+                     class="img-responsive img-rounded"
+                     src="http://www.gbtags.com/gb/networks/avatars/13d6393f-a44c-4180-8cb6-7bf0e4776283.png" alt="">
+            </p>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-12">
+            <h1 class="text-primary rebort">0ps</h1>
+
+            <p><span class="glyphicon glyphicon-envelope"></span> xxx@gmail.com</p>
+
+            <p><span class="glyphicon glyphicon-earphone"></span> 1xxxxxxxxxx</p>
+
+            <p><span class="glyphicon glyphicon-road"></span> 北京市朝阳区劲松三区</p>
+        </div>
+        <div class="col-lg-7 col-md-7 col-xs-12">
+        </div>
+    </div>
+</div>
+
+<!-- 定义简历的主体部分 //-->
+
+<div class="container">
+    <div class="row cvbody">
+        <!-- 这里定义两个区域，布局定义如下：//-->
+        <div class="col-lg-3 col-md-3 col-xs-12 blogmeun">
+            <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4>文章分类</h4>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#">Cras justo odio</a><br/>
+                        <a href="#">Dapibus ac facilisis in</a><br/>
+                        <a href="#">Morbi leo risus</a><br/>
+                        <a href="#">Porta ac consectetur ac</a><br/>
+                        <a href="#">Vestibulum at eros</a><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4>标签分类</h4>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#">Cras justo odio</a><br/>
+                        <a href="#">Dapibus ac facilisis in</a><br/>
+                        <a href="#">Morbi leo risus</a><br/>
+                        <a href="#">Porta ac consectetur ac</a><br/>
+                        <a href="#">Vestibulum at eros</a><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4>友情连接</h4>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#">Cras justo odio</a><br/>
+                        <a href="#">Dapibus ac facilisis in</a><br/>
+                        <a href="#">Morbi leo risus</a><br/>
+                        <a href="#">Porta ac consectetur ac</a><br/>
+                        <a href="#">Vestibulum at eros</a><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9 col-md-9 col-xs-12 bloglist">
+            <div class="row">
+                <div class="bbox">
+                    <a><h4>教育背景</h4></a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione enim adipisci minima
+                        perspiciatis ad nesciunt iure asperiores voluptatem neque aperiam molestias cupiditate facilis a
+                        eveniet iste sapiente ab repellendus dignissimos.</p>
+                </div>
+                <div class="bbox">
+                    <h4>工作经验</h4>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis dolorem mollitia
+                        repellendus. Magni laudantium placeat repudiandae tempore iure deleniti obcaecati. Architecto
+                        delectus doloremque quo. Dicta ratione vero eos pariatur itaque.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

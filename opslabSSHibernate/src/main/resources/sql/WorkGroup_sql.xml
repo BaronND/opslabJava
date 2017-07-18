@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root package="com.opslab.framework.base.service.BusinessLogService">
+    <!--统计共组内的用户数量-->
+    <query name="WORKGROUP_USER_COUNT_SQL">
+        <queryString>
+            <![CDATA[select count(*) from ops_re_workgourp_user t where t.groupId=?]]>
+        </queryString>
+    </query>
+</root>

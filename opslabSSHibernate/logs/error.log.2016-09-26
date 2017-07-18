@@ -1,0 +1,36 @@
+2016-09-26 17:55:31 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:57:53 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:58:01 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:20)
+
+2016-09-26 17:59:27 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:00:06 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:75] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:44)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:02:16 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:02:40 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:03:42 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+
+2016-09-26 18:03:58 ERROR [com.opslab.framework.base.service.interceptor.ServiceInterceptor:74] - java.lang.NullPointerException
+	at com.opslab.framework.base.service.interceptor.ServiceInterceptor.logAop(ServiceInterceptor.java:63)
+	at com.opslab.framework.common.service.LoginServiceTest.testLogin(LoginServiceTest.java:21)
+

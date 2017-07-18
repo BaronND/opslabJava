@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfoIF">
+
+    <!--插入数据-->
+    <insert id="save">
+        insert into t_userinfo(id,name,nick,age) value(#{id},#{name},#{nick},#{age})
+    </insert>
+    <!--
+        根据id查询得到一个user对象
+     -->
+    <select id="getUser" parameterType="String"
+            resultType="com.opslab.mybatis.model.UserInfo">
+        select * from t_userinfo where id=#{id}
+    </select>
+
+    <!--
+    根据用户编码查询得到一个user对象
+    -->
+    <select id="userNmae" parameterType="String"
+            resultType="com.opslab.mybatis.model.UserInfo">
+        select * from t_userinfo where name=#{name}
+    </select>
+
+    <!--更新数据库-->
+    <update id="changeNick" parameterType="com.opslab.mybatis.model.UserInfo">
+        update t_userinfo set nick = #{nick} where id = #{id}
+    </update>
+
+    <!--更新数据库
+     上面的更新需要传入个java备案对象，因此有时候使用并不方便
+    -->
+    <update id="changeNickMap" parameterType="java.util.Map">
+        update t_userinfo set nick = #{nick} where id = #{id}
+    </update>
+
+    <!--删除数据-->
+    <delete id="deleteById" parameterType="String">
+        delete from t_userinfo t where t.id=#{id}
+    </delete>
+</mapper>

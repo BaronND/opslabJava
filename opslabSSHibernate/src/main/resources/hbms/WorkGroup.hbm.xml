@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.opslab.framework.base.entity.WorkGroup" table="OPS_RE_WORKGROUP">
+        <id name="groupId" type="java.lang.String">
+            <column name="groupId" length="32" />
+           <generator class="com.opslab.framework.base.util.IDGenerator"/>
+        </id>
+        <property name="groupName" type="java.lang.String">
+            <column name="groupName" />
+        </property>
+        <property name="parentId" type="java.lang.String">
+            <column name="parentId" length="32"/>
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="createTime" />
+        </property>
+        <property name="valid" type="java.lang.String">
+            <column name="valid" length="1" />
+        </property>
+        <property name="descript" type="java.lang.String">
+        	<column name="descript" length="200"/>
+        </property>
+        <list name="users" table="ops_re_workgourp_user" lazy="false">
+            <key>
+                <column name="userId"/>
+            </key>
+            <index column="userCode" type="java.lang.String"/>
+            <many-to-many class="com.opslab.framework.base.entity.UserInfo"/>
+        </list>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test" id="m1466320958873" name="">
+  <process id="ProcessListener" name="测试流程Listener" isExecutable="true" isClosed="false" processType="None">
+    <extensionElements>
+      <activiti:executionListener event="start" class="com.opslab.workflow.workflow.listener.ProcessListener.ProcessStartExecutionListener"></activiti:executionListener>
+      <activiti:executionListener event="end" class="com.opslab.workflow.workflow.listener.ProcessListener.ProcessEndExcutionListener"></activiti:executionListener>
+    </extensionElements>
+    <startEvent id="_2" name="StartEvent"></startEvent>
+    <endEvent id="_3" name="EndEvent"></endEvent>
+    <userTask id="userTask" name="用户任务" activiti:assignee="张三">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.opslab.workflow.workflow.listener.ProcessListener.UserCreateListener">
+          <activiti:field name="dealUser">
+            <activiti:expression><![CDATA[当前用户${dealUser}]]></activiti:expression>
+          </activiti:field>
+          <activiti:field name="task">
+            <activiti:expression><![CDATA[${task}]]></activiti:expression>
+          </activiti:field>
+        </activiti:taskListener>
+        <activiti:taskListener event="assignment" class="com.opslab.workflow.workflow.listener.ProcessListener.UserTaskAssgineeListener"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="_5" sourceRef="_2" targetRef="userTask"></sequenceFlow>
+    <sequenceFlow id="_6" sourceRef="userTask" targetRef="_3"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ProcessListener">
+    <bpmndi:BPMNPlane bpmnElement="ProcessListener" id="BPMNPlane_ProcessListener">
+      <bpmndi:BPMNShape bpmnElement="_2" id="BPMNShape__2">
+        <omgdc:Bounds height="35.0" width="35.0" x="150.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" id="BPMNShape__3">
+        <omgdc:Bounds height="35.0" width="35.0" x="410.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="userTask" id="BPMNShape_userTask">
+        <omgdc:Bounds height="55.0" width="85.0" x="260.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_5" id="BPMNEdge__5">
+        <omgdi:waypoint x="185.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_6" id="BPMNEdge__6">
+        <omgdi:waypoint x="345.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

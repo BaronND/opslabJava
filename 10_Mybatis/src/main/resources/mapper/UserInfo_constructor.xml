@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfo_constructor">
+
+    <!--
+    根据用户编码查询得到一个user对象
+    -->
+    <select id="constructor" parameterType="String" resultMap="constructorDemo">
+      select * from t_userinfo t where t.id =#{id}
+
+    </select>
+
+    <resultMap id="constructorDemo" type="userInfo">
+        <constructor>
+            <idArg column="id" javaType="string"></idArg>
+            <arg column="name" javaType="string"></arg>
+            <arg column="nick" javaType="string"></arg>
+            <arg column="age" javaType="int"></arg>
+        </constructor>
+    </resultMap>
+</mapper>

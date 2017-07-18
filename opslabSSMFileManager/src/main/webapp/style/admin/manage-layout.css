@@ -1,0 +1,54 @@
+/*后台页面侧栏分页布局*/
+.west {
+    width: 300px;
+    padding: 10px;
+}
+.center {
+    padding: 0px;
+    margin: 0px;
+    height: auto;
+}
+
+.modelWindow {
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+}
+
+.dialog-button {
+    display: inline;
+    position: absolute;
+    bottom: 0px;
+    padding: 0px;
+    border: 0px;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.acolor {
+    color: #000000;
+    text-decoration: none;
+}
+
+.acolor:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+.acolor:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.panel-body{
+    padding:0px;
+    margin:0px;
+}
+
+.datagrid{
+    padding:0px;
+    margin:0px;
+}

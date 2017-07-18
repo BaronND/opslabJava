@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.business.model.TestModel">
+
+    <!--save-->
+    <insert id="save" parameterType="com.opslab.business.model.TestModel">
+        INSERT INTO T_TEST_MODEL (
+           kid,
+         name,
+         email,
+         msg
+        ) values (
+            #{kid},
+          #{name},
+          #{email},
+          #{msg})
+    </insert>
+
+    <!--select-->
+    <select id="page" parameterType="map" resultMap="TestModelResultMap">
+        select * from T_TEST_MODEL 
+        <where>
+            <if test="kid != null">
+                and kid = #{kid}
+            </if>
+        </where>
+    </select>
+
+    <--result mapper-->
+    <resultMap id="TestModelResultMap" type="com.opslab.business.model.TestModel">
+        <id property="kid" column="kid"></id>
+            <result property="kid" column="kid"></result>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+        <result property="msg" column="msg"></result>
+    </resultMap>
+</mapper>

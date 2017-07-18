@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="app-module" extends="app-default" namespace="/">
+
+        <!-- 业务层的操作日志 -->
+        <action name="log_*" class="businessLogAction" method="exec_{1}">
+            <result name="success">/admin/core/loglist.jsp</result>
+        </action>
+
+        <!-- 定时任务日志 -->
+        <action name="task_*" class="taskLogAction" method="exec_{1}">
+            <result name="success">/admin/core/taskloglist.jsp</result>
+        </action>
+        <!-- 权限管理 -->
+        <action name="rights_*" class="rightsAction" method="exec_{1}">
+            <result name="list_page">/admin/core/rightslist.jsp</result>
+        </action>
+    </package>
+
+</struts>
