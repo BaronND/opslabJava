@@ -1,4 +1,4 @@
-package com.opslab.core.util;
+package com.opslab.util;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;

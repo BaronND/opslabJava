@@ -1,4 +1,4 @@
-package com.opslab;
+package com.opslab.activemq;
 
 import javax.jms.Connection;
 import javax.jms.Destination;
