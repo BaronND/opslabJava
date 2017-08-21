@@ -7,15 +7,14 @@
     </kbase>
 
     <kbase name="dtables" packages="dtables">
-
         <ksession name="ksession-dtables"/>
-
     </kbase>
 
     <kbase name="process" packages="process">
-
         <ksession name="ksession-process"/>
-
     </kbase>
 
+    <kbase name="personKB" packages="rules.person">
+        <ksession name="personKS"/>
+    </kbase>
 </kmodule>

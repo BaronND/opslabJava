@@ -1,10 +1,17 @@
 package com.xu.drools;
 import entity.Person;
-rule "2"
+rule "person-rule"
 	when
         $p : Person(age > 30);
     then
 		System.out.println("hello, young xu2!");
+end
+
+rule "person-rule2"
+	when
+        $p : Person(age < 30);
+    then
+		System.out.println("hello, young xu!");
 end
 
 query "people2"

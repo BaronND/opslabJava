@@ -1,6 +1,6 @@
 package drools;
 
-import entity.Message;
+import entity.Person;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -22,18 +22,16 @@ public class Drools {
         KieContainer kContainer = ks.getKieClasspathContainer();
 
         //根据规则kmodule.xml中的配置名称ksession-rules的规则文件
-        KieSession kSession = kContainer.newKieSession("ksession-rules");
+        KieSession kSession = kContainer.newKieSession("personKS");
 
 
         //执行规则
+        Person person = new Person("111","test",29);
+        kSession.insert(person);
+        kSession.fireAllRules();
 
-//        for (Message msg : listMsg) {
-//
-//            kSession.insert(msg);
-//
-//            kSession.fireAllRules();
-//
-//
-//        }
+        Person person2 = new Person("111","test",39);
+        kSession.insert(person2);
+        kSession.fireAllRules();
     }
 }
