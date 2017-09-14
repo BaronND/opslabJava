@@ -2,7 +2,6 @@ package com.opslab.rabbitmq.controller;
 
 import com.opslab.App;
 import com.opslab.rabbitmq.spring.Sender;
-import com.opslab.springboot.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by wuyanbing on 2017/9/14 0014.
+ * Created by 0opslab
  */
 @Controller
 @RequestMapping("/rabbitmq")
