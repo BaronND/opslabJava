@@ -1,4 +1,4 @@
-package com.opslab.springboot;
+package com.opslab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

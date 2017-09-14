@@ -1,26 +1,27 @@
-package com.opslab.springboot.service;
+package com.opslab.rabbitmq.spring;
 
-import com.opslab.springboot.Application;
+import com.opslab.App;
+import com.opslab.Application;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
 
 /**
- * Created by monsoon on 28/05/2017.
+ * 测试消息
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class)
-public class HelloServiceTest {
-    @Autowired
-    HelloService service;
+public class SenderTest {
 
-    @org.junit.Test
-    public void say() throws Exception {
-        assertEquals("Hello Say",service.say());
+    @Autowired
+    public Sender sender;
+
+    @Test
+    public void send() throws Exception {
+        sender.send(App.RABBITMQ_QUEUE_NAME, "message");
     }
 
 }
