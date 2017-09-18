@@ -1,6 +1,6 @@
 package com.opslab.zookeeper.sdk;
 
-import com.opslab.zookeeper.Zookeeper;
+import com.opslab.zookeeper.App;
 import org.apache.zookeeper.*;
 
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +13,7 @@ public class Zookeeper_syncAPI_Create implements Watcher {
     private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
 
     public static void main(String[] args) throws Exception {
-        ZooKeeper zookeeper = new ZooKeeper(Zookeeper.CONNECT_INFO, 5000, new Zookeeper_syncAPI_Create());
+        ZooKeeper zookeeper = new ZooKeeper(App.HOST, App.TIME_OUT, new Zookeeper_syncAPI_Create());
         System.out.println(zookeeper.getState());
         connectedSemaphore.await();
 

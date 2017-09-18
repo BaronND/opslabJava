@@ -1,5 +1,6 @@
 package com.opslab.zookeeper.curator;
 
+import com.opslab.zookeeper.App;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -14,8 +15,8 @@ public class Create_node {
     private static Logger logger = Logger.getLogger(Create_node.class);
 
     public static void main(String[] args) throws Exception {
-        CuratorFramework client = CuratorFrameworkFactory.builder().connectString("127.0.0.1:2181")
-                .sessionTimeoutMs(5000).retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
+        CuratorFramework client = CuratorFrameworkFactory.builder().connectString(App.HOST)
+                .sessionTimeoutMs(App.TIME_OUT).retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
         client.start();
 
         logger.debug("session connection ");
