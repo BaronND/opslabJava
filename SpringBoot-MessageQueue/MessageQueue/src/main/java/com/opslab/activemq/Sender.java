@@ -1,7 +1,6 @@
 package com.opslab.activemq;
 
 import com.opslab.App;
-import com.opslab.App;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
