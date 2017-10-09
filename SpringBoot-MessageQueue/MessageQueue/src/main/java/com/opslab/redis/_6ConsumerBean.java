@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by 0opslab
  */
 public class _6ConsumerBean {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Jedis redis = new Jedis("localhost");
 
         JedisPubSub redisPubSub = new JedisPubSub() {
@@ -23,6 +23,7 @@ public class _6ConsumerBean {
              */
             @Override
             public void onUnsubscribe(String channel, int subscribedChannels) {
+                System.out.println("停用消息队列");
             }
 
             /**
@@ -78,6 +79,13 @@ public class _6ConsumerBean {
             }
         };
         String channel = "queue-channel1";
+        //subscribe是一个阻塞的方法，在取消订阅该频道前，会一直阻塞在这，只有当取消了订阅才会执行下面的other code，
+        // 参考上面代码，我在onMessage里面收到消息后，调用了this.unsubscribe(); 来取消订阅
         redis.subscribe(redisPubSub, channel);
+
+        //other code
+
+
+
     }
 }
