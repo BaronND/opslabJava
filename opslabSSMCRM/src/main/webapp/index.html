@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Upload File Request Page</title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+单文件上传:
+<form method="POST" action="/image/upload" enctype="multipart/form-data">
+    ImageGroup id : <input type="text" name="gid"/><br>
+    Business System bid: <input type="text" name="bid"/><br>
+    File to upload: <input type="file" name="file"/><br>
+    <input type="submit" value="Upload"> Press here to upload the file!
+</form>
+
+多文件上传:
+<form method="POST" action="/image/uploads" enctype="multipart/form-data">
+    ImageGroup id : <input type="text" name="gid"/><br>
+    Business System bid: <input type="text" name="bid"/><br>
+    File to upload: <input type="file" name="file"/><br>
+    File to upload: <input type="file" name="file"/><br>
+    File to upload: <input type="file" name="file"/><br>
+    <input type="submit" value="Upload"> Press here to upload the file!
+</form>
+
+
+利用HTML5的FORMDATA特性上传文件:<br>
+上传文件:<input id="file" type="file" name="file"><br>
+<button type="button" onclick="uploadFile()">upload</button>
+<script type="text/javascript">
+    function uploadFile(){
+        var formData = new FormData();
+        formData.append("gid", "1111");
+        formData.append("bid", "2222");
+        formData.append("file", document.getElementById("file").files[0]);
+
+        $.ajax({
+            type:"post",
+            url:"/file/upload",
+            async:false,
+            contentType: false,    //这个一定要写
+            processData: false, //这个也一定要写，不然会报错
+            data:formData,
+            dataType:'text',    //返回类型，有json，text，HTML。这里并没有jsonp格式，所以别妄想能用jsonp做跨域了。
+            success:function(data){
+                console.log(data);
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown, data){
+                alert(errorThrown);
+            }
+        });
+    }
+</script>
+</body>
+</html>
+</body>
+</html>

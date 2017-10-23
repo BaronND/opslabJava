@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.opslab.blog.admin.domain.UserInfo">
+
+    <insert id="insert" parameterType="com.opslab.domain.UserInfo">
+        insert into t_test_userinfo1(
+        kid,
+        userId,
+        userName,
+        email
+        )values(
+        #{kid},
+        #{userId},
+        #{userName},
+        #{email}
+        )
+
+    </insert>
+
+    <!--查询业务日志-->
+    <select id="select" parameterType="map" resultMap="UserInfoResultMap">
+        select * from t_test_userinfo1
+        <where>
+            <if test="kid != null">
+                and userId = #{userId}
+            </if>
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+            <if test="userName != null">
+                and userName = #{userName}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) count from t_test_userinfo1
+        <where>
+            <if test="kid != null">
+                and kid = #{kid}
+            </if>
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+            <if test="userName != null">
+                and userName = #{userName}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+        </where>
+    </select>
+
+
+
+    <resultMap id="UserInfoResultMap" type="com.opslab.domain.UserInfo">
+        <id property="kid" column="kid"></id>
+        <result property="userId" column="userId"></result>
+        <result property="userName" column="userName"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+
+
+</mapper>
