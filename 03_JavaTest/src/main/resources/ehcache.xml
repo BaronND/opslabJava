@@ -12,7 +12,7 @@
     <diskStore path="java.io.tmpdir"/>
     
     <cache name="authorizationCache"
-        maxElementsInMemory="10000"
+           maxElementsInMemory="10000"
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
@@ -21,7 +21,7 @@
     </cache>
 
     <cache name="authenticationCache"
-        maxElementsInMemory="10000"
+           maxElementsInMemory="10000"
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
@@ -30,7 +30,7 @@
     </cache>
 
     <cache name="shiro-activeSessionCache"
-        maxElementsInMemory="10000"
+           maxElementsInMemory="10000"
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"

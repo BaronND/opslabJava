@@ -135,6 +135,13 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+
+      <!--ehcache-->
+      <dependency>
+          <groupId>net.sf.ehcache</groupId>
+          <artifactId>ehcache-core</artifactId>
+          <version>2.6.11</version>
+      </dependency>
   </dependencies>
 
   <build>
